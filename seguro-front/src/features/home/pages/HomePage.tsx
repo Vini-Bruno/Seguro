@@ -1,4 +1,4 @@
-import { useMemo, useState } from 'react';
+import { useEffect, useMemo, useState } from 'react';
 
 import advisorPhoto from '@/assets/torrezan-founder-advisor.jpg';
 import heroPhoto from '@/assets/torrezan-founder-hero.jpg';
@@ -75,21 +75,29 @@ const steps = [
 ];
 
 const insurers = [
-  { name: 'Porto Seguro', slug: 'porto-seguro' },
-  { name: 'Azul Seguros', slug: 'azul-seguros' },
-  { name: 'Itaú Seguros', slug: 'itau-seguros' },
-  { name: 'Mitsui Seguros', slug: 'mitsui-seguros' },
-  { name: 'Allianz', slug: 'allianz' },
-  { name: 'Yelum', slug: 'yelum' },
-  { name: 'HDI', slug: 'hdi' },
-  { name: 'Bradesco', slug: 'bradesco' },
-  { name: 'Aliro', slug: 'aliro' },
-  { name: 'Tókio Marine', slug: 'tokio-marine' },
-  { name: 'Mapfre', slug: 'mapfre' },
-  { name: 'Zurich', slug: 'zurich' },
-  { name: 'Suhai', slug: 'suhai' },
-  { name: 'Justos', slug: 'justos' },
-  { name: 'Darwin', slug: 'darwin' },
+  { name: 'Porto Seguro', slug: 'porto-seguro', logo: '/insurers/porto-seguro.svg' },
+  { name: 'Azul Seguros', slug: 'azul-seguros', logo: '/insurers/azul-seguros.svg', shape: 'square' },
+  { name: 'Itaú Seguros', slug: 'itau-seguros', logo: '/insurers/itau-seguros.png' },
+  {
+    name: 'Tókio Marine Seguradora',
+    slug: 'tokio-marine',
+    logo: '/insurers/tokio-marine.svg',
+  },
+  {
+    name: 'Mitsui Sumitomo Insurance',
+    slug: 'mitsui-sumitomo',
+    logo: '/insurers/mitsui-sumitomo.png',
+    shape: 'wide',
+  },
+  { name: 'Allianz', slug: 'allianz', logo: '/insurers/allianz.svg' },
+  { name: 'Yelum Seguradora', slug: 'yelum', logo: '/insurers/yelum-seguradora.png' },
+  { name: 'HDI Seguros', slug: 'hdi', logo: '/insurers/hdi-seguros.svg' },
+  { name: 'Bradesco Seguros', slug: 'bradesco', logo: '/insurers/bradesco-seguros.svg' },
+  { name: 'Darwin', slug: 'darwin', logo: '/insurers/darwin.svg' },
+  { name: 'Mapfre', slug: 'mapfre', logo: '/insurers/mapfre.svg' },
+  { name: 'Zurich', slug: 'zurich', logo: '/insurers/zurich.svg', shape: 'square' },
+  { name: 'Suhai Seguradora', slug: 'suhai', logo: '/insurers/suhai-seguradora.png' },
+  { name: 'Justos', slug: 'justos', logo: '/insurers/justos.svg' },
 ];
 
 const useCases = [
@@ -128,6 +136,19 @@ export function HomePage() {
   const [clientName, setClientName] = useState('');
   const [phone, setPhone] = useState('');
   const [quoteType, setQuoteType] = useState(quoteTypes[0].value);
+
+  useEffect(() => {
+    const anchor = window.location.hash.slice(1);
+    if (!anchor) {
+      return undefined;
+    }
+
+    const timeoutId = window.setTimeout(() => {
+      document.getElementById(anchor)?.scrollIntoView({ block: 'start' });
+    }, 80);
+
+    return () => window.clearTimeout(timeoutId);
+  }, []);
 
   const normalizedPhone = onlyDigits(phone);
   const selectedQuoteType = quoteTypes.find((type) => type.value === quoteType) ?? quoteTypes[0];
@@ -354,8 +375,17 @@ export function HomePage() {
         <div className="insurers-carousel" aria-label="Seguradoras parceiras">
           <div className="insurers-track">
             {[...insurers, ...insurers].map((insurer, index) => (
-              <div className="insurer-card" key={`${insurer.slug}-${index}`}>
-                <span>{insurer.name}</span>
+              <div
+                className={`insurer-card${insurer.shape ? ` insurer-card--${insurer.shape}` : ''}`}
+                key={`${insurer.slug}-${index}`}
+                aria-label={index < insurers.length ? insurer.name : undefined}
+                aria-hidden={index >= insurers.length ? true : undefined}
+              >
+                <img
+                  src={insurer.logo}
+                  alt={index < insurers.length ? insurer.name : ''}
+                  loading="lazy"
+                />
               </div>
             ))}
           </div>
