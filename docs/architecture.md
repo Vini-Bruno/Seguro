@@ -17,8 +17,15 @@
 ### Frontend
 
 - `src/app`: bootstrap da aplicação
+- `src/config`: configurações estáveis da aplicação e leitura de variáveis de ambiente
 - `src/components`: componentes compartilhados
 - `src/features`: módulos por funcionalidade
+- `src/features/<feature>/components`: seções e componentes específicos da feature
+- `src/features/<feature>/data`: conteúdo, listas e constants da interface
+- `src/features/<feature>/hooks`: estado e efeitos próprios da feature
+- `src/features/<feature>/pages`: composição final das telas
+- `src/features/<feature>/types`: contratos TypeScript da feature
+- `src/lib`: helpers reutilizáveis e integrações utilitárias
 - `src/services`: comunicação com API e integrações do cliente
 - `src/styles`: estilos globais e tokens visuais
 
