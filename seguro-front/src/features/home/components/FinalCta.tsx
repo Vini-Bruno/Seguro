@@ -8,12 +8,16 @@ export function FinalCta({ whatsappHref }: FinalCtaProps) {
   return (
     <section className="final-cta">
       <div>
-        <span className="eyebrow">Atendimento direto</span>
-        <h2>Quer comparar seguro com alguém olhando os detalhes junto com você?</h2>
+        <span className="eyebrow">Cotação gratuita</span>
+        <h2>Quer saber quanto ficaria o seguro do seu veículo?</h2>
+        <p>
+          Clique no botão, responda algumas perguntas rápidas e receba uma cotação personalizada
+          com orientação de um corretor.
+        </p>
       </div>
       <img className="final-cta__mark" src={torrezanEmblem} alt="" aria-hidden="true" />
       <a className="primary-button" href={whatsappHref} target="_blank" rel="noreferrer">
-        Falar com o Leo
+        Cotar grátis pelo WhatsApp
       </a>
     </section>
   );

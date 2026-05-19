@@ -19,7 +19,7 @@ export function SiteFooter({ whatsappHref }: SiteFooterProps) {
               <em>Seguros</em>
             </span>
           </div>
-          <p>Comparação e orientação para escolher seguro com mais clareza.</p>
+          <p>Cotação e orientação para escolher seguro auto com mais clareza.</p>
         </div>
 
         <nav className="site-footer__links" aria-label="Links rápidos">
@@ -40,7 +40,7 @@ export function SiteFooter({ whatsappHref }: SiteFooterProps) {
             Instagram @torrezanseguros
           </a>
           <span>{siteConfig.contact.email}</span>
-          <span>Atendimento consultivo para cotação e renovação</span>
+          <span>Atendimento consultivo para cotação, renovação e sinistro</span>
         </div>
       </div>
 

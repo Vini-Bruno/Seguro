@@ -5,10 +5,10 @@ export function InsurersSection() {
     <section className="insurers-section" id="seguradoras">
       <div className="insurers-header">
         <span className="eyebrow eyebrow--light">Seguradoras parceiras</span>
-        <h2>Trabalhamos com as principais seguradoras do Brasil.</h2>
+        <h2>Compare opções de seguradoras antes de decidir.</h2>
         <p>
-          A equipe compara alternativas de mercado para encontrar uma proposta coerente com
-          o seu perfil, não apenas a opção mais barata da lista.
+          A equipe avalia alternativas conforme perfil, veículo, região e coberturas desejadas,
+          sempre de acordo com a aceitação de cada seguradora.
         </p>
       </div>
 

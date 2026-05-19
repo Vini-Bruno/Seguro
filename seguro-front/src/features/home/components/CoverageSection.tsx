@@ -1,22 +1,30 @@
-import { insuranceOptions } from '../data/homeContent';
+import { coverageItems } from '../data/homeContent';
 
-export function CoverageSection() {
+type CoverageSectionProps = {
+  whatsappHref: string;
+};
+
+export function CoverageSection({ whatsappHref }: CoverageSectionProps) {
   return (
-    <section className="coverage-section" id="seguros">
+    <section className="coverage-section" id="coberturas">
       <div className="coverage-copy">
-        <span className="eyebrow">Tipos de seguro</span>
-        <h2>Proteção para rotina, patrimônio e planos.</h2>
+        <span className="eyebrow">Principais coberturas</span>
+        <h2>Entenda o que pode entrar no seu seguro auto.</h2>
         <p>
-          Cada tipo de seguro pede uma conversa diferente. A Torrezan ajuda a comparar
-          alternativas sem transformar tudo em uma proposta igual para todo mundo.
+          As coberturas variam conforme seguradora, veículo e plano contratado. Durante a cotação,
+          explicamos o que cada uma significa na prática.
         </p>
+        <a className="section-cta primary-button" href={whatsappHref} target="_blank" rel="noreferrer">
+          Quero entender minhas coberturas
+        </a>
       </div>
 
       <div className="coverage-list">
-        {insuranceOptions.map((item) => (
+        {coverageItems.map((item) => (
           <article key={item.title}>
+            <span className="coverage-icon" aria-hidden="true">{item.icon}</span>
             <strong>{item.title}</strong>
-            <span>{item.description}</span>
+            <p>{item.description}</p>
           </article>
         ))}
       </div>

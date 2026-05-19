@@ -22,7 +22,7 @@ export function SiteHeader({ whatsappHref }: SiteHeaderProps) {
       </nav>
 
       <a className="header-action" href={whatsappHref} target="_blank" rel="noreferrer">
-        Falar com o Leo
+        Cotar grátis
       </a>
     </header>
   );

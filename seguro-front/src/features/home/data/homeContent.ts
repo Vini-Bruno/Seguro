@@ -1,74 +1,245 @@
-import type { Insurer, NavLink, QuoteType, TextCard, TrustSignal, UseCase } from '../types';
+import type { FaqItem, IconCard, Insurer, NavLink, QuoteType, TextCard, TrustSignal } from '../types';
 
 export const navLinks: NavLink[] = [
-  { label: 'Vantagens', href: '#beneficios' },
-  { label: 'Seguros', href: '#seguros' },
-  { label: 'Seguradoras', href: '#seguradoras' },
-  { label: 'Cotação', href: '#cotacao' },
+  { label: 'Veículos', href: '#veiculos' },
+  { label: 'Benefícios', href: '#beneficios' },
+  { label: 'Como funciona', href: '#como-funciona' },
+  { label: 'Coberturas', href: '#coberturas' },
+  { label: 'Dúvidas', href: '#duvidas' },
 ];
 
 export const trustSignals: TrustSignal[] = [
-  { value: 'Comparação', label: 'entre seguradoras parceiras' },
-  { value: 'WhatsApp', label: 'orientação sem formulário longo' },
-  { value: 'Pós-venda', label: 'apoio em renovação e sinistro' },
+  { value: 'Cotação personalizada', label: 'veículo, uso, perfil e região' },
+  { value: 'Compare seguradoras', label: 'cobertura, franquia e assistência' },
 ];
 
 export const quoteTypes: QuoteType[] = [
-  { value: 'Auto', label: 'Seguro auto', detail: 'carro, moto ou utilitário' },
-  { value: 'Residencial', label: 'Seguro residencial', detail: 'casa ou apartamento' },
-  { value: 'Vida', label: 'Seguro de vida', detail: 'proteção para família' },
-  { value: 'Empresarial', label: 'Seguro empresarial', detail: 'empresa, loja ou escritório' },
+  { value: 'Carro', label: 'Carro', detail: 'passeio ou SUV' },
+  { value: 'Moto', label: 'Moto', detail: 'uso particular ou trabalho' },
+  { value: 'Picape', label: 'Picape', detail: 'particular, rural ou empresa' },
+  { value: 'Van', label: 'Van', detail: 'família, escolar ou empresa' },
+  { value: 'Caminhao', label: 'Caminhão', detail: 'carga ou trabalho' },
+  { value: 'Utilitario', label: 'Utilitário', detail: 'operação ou empresa' },
+  { value: 'Empresarial', label: 'Veículo empresarial', detail: 'frota ou utilitário' },
+];
+
+export const vehicleTypes: IconCard[] = [
+  { icon: 'AU', title: 'Carro', description: 'Cotação para carro de passeio, hatch, sedan e SUV.' },
+  { icon: 'MT', title: 'Moto', description: 'Opções conforme cilindrada, uso e região de circulação.' },
+  { icon: 'SUV', title: 'SUV', description: 'Alternativas para uso familiar, estrada e rotina urbana.' },
+  { icon: 'PK', title: 'Picape', description: 'Cotação para uso particular, trabalho, rural ou empresa.' },
+  { icon: 'VN', title: 'Van', description: 'Proteção para uso familiar, transporte ou operação.' },
+  { icon: 'UT', title: 'Utilitário', description: 'Avaliação para veículos de serviço, entrega ou apoio.' },
+  { icon: 'CM', title: 'Caminhão', description: 'Análise de aceitação por perfil de uso e seguradora.' },
+  { icon: 'PJ', title: 'Veículo empresarial', description: 'Alternativas para frota, operação ou veículo de empresa.' },
 ];
 
 export const benefits: TextCard[] = [
   {
-    title: 'Seguro explicado, sem empurra-empurra',
-    description:
-      'A Torrezan mostra o que muda entre preço, franquia, cobertura e assistência antes de você decidir.',
+    title: 'Compare seguradoras',
+    description: 'Receba opções de acordo com seu perfil, veículo, região e coberturas desejadas.',
   },
   {
-    title: 'Cotação alinhada ao seu perfil',
-    description:
-      'Você conta sua rotina, seu bem ou sua empresa, e recebe opções que fazem sentido para esse cenário.',
+    title: 'Atendimento pelo WhatsApp',
+    description: 'Você inicia a cotação de forma simples, sem preencher formulários longos.',
   },
   {
-    title: 'Atendimento que continua depois',
-    description:
-      'Renovação, dúvidas sobre apólice e orientação em sinistro também entram na conversa com a equipe.',
-  },
-];
-
-export const insuranceOptions: TextCard[] = [
-  {
-    title: 'Auto e moto',
-    description: 'Compare cobertura para colisão, roubo, terceiros, assistência e franquia.',
+    title: 'Seguro sob medida',
+    description: 'A proposta pode ser ajustada com cobertura completa, terceiros, assistência, vidros e mais.',
   },
   {
-    title: 'Residencial',
-    description: 'Proteção para casa ou apartamento, com coberturas e assistências úteis no dia a dia.',
+    title: 'Orientação de corretor',
+    description: 'Entenda as diferenças entre as coberturas antes de contratar.',
   },
   {
-    title: 'Empresarial',
-    description: 'Opções para patrimônio, operação, equipamentos e responsabilidade da empresa.',
+    title: 'Franquia sem mistério',
+    description: 'Explicação clara sobre quando a franquia é cobrada e como influencia no valor do seguro.',
   },
   {
-    title: 'Vida',
-    description: 'Planejamento de proteção financeira para família, sucessão e tranquilidade.',
+    title: 'Suporte no sinistro',
+    description: 'Você conta com orientação se precisar acionar o seguro.',
   },
   {
-    title: 'Terceiros',
-    description: 'Entenda limites, danos materiais, danos corporais e quando vale reforçar a cobertura.',
-  },
-  {
-    title: 'Renovação',
-    description: 'Revisão da apólice atual para ajustar preço, cobertura e necessidade real.',
+    title: 'Assistência 24h',
+    description: 'Orientação para guincho, pane, colisão e demais serviços previstos na apólice.',
   },
 ];
 
 export const steps = [
-  'Conte seu cenário',
-  'Compare cobertura, preço e franquia',
-  'Decida com orientação da Torrezan',
+  'Clique no botão de WhatsApp',
+  'Responda perguntas rápidas',
+  'Analisamos opções para seu perfil',
+  'Você recebe a cotação explicada',
+  'Ajustamos as coberturas',
+  'Você decide com tranquilidade',
+];
+
+export const advisoryItems = [
+  'Franquia',
+  'Cobertura para terceiros',
+  'Assistência 24h',
+  'Carro reserva',
+  'Vidros, faróis e retrovisores',
+  'Roubo e furto',
+  'Colisão',
+  'Danos da natureza',
+  'Exclusões da apólice',
+  'Diferenças entre seguradoras',
+  'Coberturas essenciais para seu perfil',
+  'Quando a franquia é cobrada',
+];
+
+export const coverageItems: IconCard[] = [
+  {
+    icon: 'RF',
+    title: 'Roubo e furto',
+    description: 'Proteção caso o veículo seja roubado ou furtado, conforme as condições da apólice.',
+  },
+  {
+    icon: 'CO',
+    title: 'Colisão',
+    description: 'Ajuda em caso de danos ao veículo decorrentes de acidente coberto.',
+  },
+  {
+    icon: 'IN',
+    title: 'Incêndio',
+    description: 'Cobertura para danos causados por incêndio, conforme contratação e regras da apólice.',
+  },
+  {
+    icon: '3O',
+    title: 'Danos a terceiros',
+    description: 'Proteção para prejuízos causados a outras pessoas, veículos ou bens, conforme limite contratado.',
+  },
+  {
+    icon: '24',
+    title: 'Assistência 24 horas',
+    description: 'Serviços como guincho, chaveiro, pane seca, troca de pneu e outros, conforme plano escolhido.',
+  },
+  {
+    icon: 'GH',
+    title: 'Guincho',
+    description: 'Auxílio para remoção do veículo em situações previstas na assistência contratada.',
+  },
+  {
+    icon: 'VI',
+    title: 'Vidros, faróis e retrovisores',
+    description: 'Cobertura adicional para reparo ou troca de itens específicos, conforme contratação.',
+  },
+  {
+    icon: 'CR',
+    title: 'Carro reserva',
+    description: 'Possibilidade de usar veículo reserva em situações cobertas, conforme regras da seguradora.',
+  },
+  {
+    icon: 'DN',
+    title: 'Danos da natureza',
+    description: 'Pode incluir enchente, granizo, queda de árvore e outros eventos previstos na apólice.',
+  },
+  {
+    icon: 'AC',
+    title: 'Acessórios',
+    description: 'Alguns acessórios podem ser protegidos quando informados e aceitos pela seguradora.',
+  },
+];
+
+export const trustCards: TextCard[] = [
+  {
+    title: 'Cotação gratuita e sem compromisso',
+    description: 'Você conhece valores e coberturas antes de decidir se faz sentido contratar.',
+  },
+  {
+    title: 'Explicação antes da contratação',
+    description: 'A proposta é traduzida para você entender franquia, assistências, limites e exclusões.',
+  },
+  {
+    title: 'Suporte antes e depois',
+    description: 'O atendimento continua em dúvidas, renovação e orientação para acionar o seguro.',
+  },
+  {
+    title: 'Dados usados para cotação',
+    description: 'As informações são usadas apenas para atendimento e simulação do seguro.',
+  },
+];
+
+export const proofItems: TextCard[] = [
+  {
+    title: 'Antes de contratar, você entende o que está levando',
+    description: 'Explicação clara das coberturas, cotação sem compromisso e atendimento direto com corretor.',
+  },
+  {
+    title: 'Opções ajustadas ao seu perfil',
+    description: 'A conversa considera sua rotina, quem dirige, onde o veículo circula e o que você quer proteger.',
+  },
+  {
+    title: 'Decisão sem pressa',
+    description: 'A contratação só acontece se a proposta fizer sentido para você.',
+  },
+];
+
+export const faqItems: FaqItem[] = [
+  {
+    question: 'A cotação é gratuita?',
+    answer: 'Sim. A cotação é gratuita e sem compromisso. Você só contrata se fizer sentido para você.',
+  },
+  {
+    question: 'Sou obrigado a contratar depois de cotar?',
+    answer: 'Não. A cotação serve para você conhecer valores, coberturas e opções disponíveis para seu perfil.',
+  },
+  {
+    question: 'Quais dados preciso informar?',
+    answer:
+      'Normalmente são solicitadas informações sobre o veículo, região de circulação, perfil de uso e condutores. Alguns dados adicionais podem ser necessários para simular com precisão, conforme exigência das seguradoras.',
+  },
+  {
+    question: 'Por que preciso informar alguns dados para cotar?',
+    answer:
+      'Porque o valor do seguro depende de fatores como modelo do veículo, local de circulação, perfil de uso, condutores, coberturas escolhidas e regras de cada seguradora.',
+  },
+  {
+    question: 'Preciso informar CPF logo no início?',
+    answer:
+      'Não necessariamente. Primeiro podemos entender seu interesse e explicar o processo. Quando algum dado pessoal for necessário para uma cotação mais precisa, explicamos o motivo antes de solicitar.',
+  },
+  {
+    question: 'Posso contratar apenas cobertura contra roubo e furto?',
+    answer:
+      'Em alguns casos, sim. A disponibilidade depende do veículo, perfil, região e aceitação da seguradora. Durante o atendimento, podemos avaliar opções completas e opções mais básicas.',
+  },
+  {
+    question: 'Seguro cobre terceiros?',
+    answer:
+      'Sim, quando a cobertura de danos a terceiros é contratada. Ela pode ajudar em prejuízos causados a outras pessoas, veículos ou bens, conforme o limite escolhido.',
+  },
+  {
+    question: 'O que é franquia?',
+    answer:
+      'Franquia é o valor pago pelo segurado em determinadas situações de sinistro parcial, como reparo do próprio veículo. O valor e as regras variam conforme a apólice.',
+  },
+  {
+    question: 'Posso colocar mais de um condutor?',
+    answer:
+      'Sim, é possível informar os condutores que utilizam o veículo. Isso ajuda a cotação a ficar mais adequada à realidade de uso.',
+  },
+  {
+    question: 'Seguro cobre enchente?',
+    answer:
+      'Pode cobrir, desde que a cobertura esteja prevista na apólice. Por isso é importante entender exatamente o que está incluso antes de contratar.',
+  },
+  {
+    question: 'Vocês ajudam se acontecer um sinistro?',
+    answer:
+      'Sim. O atendimento não termina na contratação. Você recebe orientação sobre como acionar a seguradora e quais documentos podem ser necessários.',
+  },
+  {
+    question: 'A cotação pelo WhatsApp é segura?',
+    answer:
+      'Sim. O WhatsApp é usado para facilitar o atendimento e a troca de informações. Seus dados devem ser utilizados apenas para atendimento e simulação da cotação.',
+  },
+  {
+    question: 'Meus dados serão protegidos?',
+    answer:
+      'As informações fornecidas são utilizadas para atendimento e cotação de seguro, conforme a Política de Privacidade.',
+  },
 ];
 
 export const insurers: Insurer[] = [
@@ -76,7 +247,7 @@ export const insurers: Insurer[] = [
   { name: 'Azul Seguros', slug: 'azul-seguros', logo: '/insurers/azul-seguros.svg', shape: 'square' },
   { name: 'Itaú Seguros', slug: 'itau-seguros', logo: '/insurers/itau-seguros.png' },
   {
-    name: 'Tókio Marine Seguradora',
+    name: 'Tokio Marine Seguradora',
     slug: 'tokio-marine',
     logo: '/insurers/tokio-marine.svg',
   },
@@ -95,32 +266,4 @@ export const insurers: Insurer[] = [
   { name: 'Zurich', slug: 'zurich', logo: '/insurers/zurich.svg', shape: 'square' },
   { name: 'Suhai Seguradora', slug: 'suhai', logo: '/insurers/suhai-seguradora.png' },
   { name: 'Justos', slug: 'justos', logo: '/insurers/justos.svg' },
-];
-
-export const useCases: UseCase[] = [
-  {
-    title: 'Renovação do seguro auto',
-    description:
-      'Revisão da apólice atual, comparação de franquia e checagem de coberturas que ainda fazem sentido.',
-    tag: 'Auto',
-  },
-  {
-    title: 'Primeiro seguro residencial',
-    description:
-      'Explicação simples sobre danos elétricos, roubo, vendaval e assistências para casa ou apartamento.',
-    tag: 'Residencial',
-  },
-  {
-    title: 'Empresa protegida sem excesso',
-    description:
-      'Cotação para proteger patrimônio e operação sem contratar coberturas que não combinam com o negócio.',
-    tag: 'Empresarial',
-  },
-];
-
-export const advisoryItems = [
-  'Entendimento do que você precisa proteger',
-  'Comparação entre seguradoras parceiras',
-  'Explicação de cobertura, franquia e assistência',
-  'Apoio em renovação, dúvidas e sinistro',
 ];

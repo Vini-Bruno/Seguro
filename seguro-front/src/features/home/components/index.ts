@@ -1,10 +1,15 @@
 export { AdvisorSection } from './AdvisorSection';
 export { BenefitsSection } from './BenefitsSection';
 export { CoverageSection } from './CoverageSection';
+export { FaqSection } from './FaqSection';
 export { FinalCta } from './FinalCta';
+export { FloatingWhatsapp } from './FloatingWhatsapp';
 export { HeroSection } from './HeroSection';
 export { InsurersSection } from './InsurersSection';
+export { PrivacySection } from './PrivacySection';
+export { ProofSection } from './ProofSection';
 export { SiteFooter } from './SiteFooter';
 export { SiteHeader } from './SiteHeader';
 export { StepsSection } from './StepsSection';
-export { UseCasesSection } from './UseCasesSection';
+export { TrustSection } from './TrustSection';
+export { VehicleTypesSection } from './VehicleTypesSection';

@@ -30,9 +30,3 @@ cd seguro-front
 copy .env.example .env
 npm run dev
 ```
-
-Preencha `VITE_N8N_WEBHOOK_URL` no `.env` com a URL de produção do webhook do n8n:
-
-```text
-https://seu-n8n.com/webhook/insurance-chatbot
-```
