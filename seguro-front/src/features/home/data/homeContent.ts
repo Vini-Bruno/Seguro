@@ -1,10 +1,15 @@
-import type { FaqItem, IconCard, Insurer, NavLink, QuoteType, TextCard, TrustSignal } from '../types';
+import clientFiatSuvPhoto from '@/assets/client-fiat-suv-seguro.jpeg';
+import clientPeugeotPhoto from '@/assets/client-peugeot-entrega.jpeg';
+import clientVolkswagenPhoto from '@/assets/client-volkswagen-seguro.jpeg';
+
+import type { ClientProof, FaqItem, IconCard, Insurer, NavLink, QuoteType, TextCard, TrustSignal } from '../types';
 
 export const navLinks: NavLink[] = [
   { label: 'Veículos', href: '#veiculos' },
   { label: 'Benefícios', href: '#beneficios' },
   { label: 'Como funciona', href: '#como-funciona' },
   { label: 'Coberturas', href: '#coberturas' },
+  { label: 'Clientes', href: '#clientes' },
   { label: 'Dúvidas', href: '#duvidas' },
 ];
 
@@ -163,16 +168,43 @@ export const trustCards: TextCard[] = [
 
 export const proofItems: TextCard[] = [
   {
-    title: 'Antes de contratar, você entende o que está levando',
-    description: 'Explicação clara das coberturas, cotação sem compromisso e atendimento direto com corretor.',
+    title: 'Seguro junto com a compra',
+    description: 'A proteção pode ser encaminhada no momento em que o veículo passa a fazer parte da sua rotina.',
   },
   {
-    title: 'Opções ajustadas ao seu perfil',
-    description: 'A conversa considera sua rotina, quem dirige, onde o veículo circula e o que você quer proteger.',
+    title: 'Coberturas explicadas',
+    description: 'Franquia, assistência, terceiros e carro reserva são comparados com calma antes da contratação.',
   },
   {
-    title: 'Decisão sem pressa',
-    description: 'A contratação só acontece se a proposta fizer sentido para você.',
+    title: 'Atendimento próximo',
+    description: 'Você fala com quem acompanha a cotação, ajusta a proposta e orienta também depois da emissão.',
+  },
+];
+
+export const clientProofs: ClientProof[] = [
+  {
+    image: clientVolkswagenPhoto,
+    alt: 'Cliente ao lado de um Volkswagen preto em uma loja de veículos',
+    meta: 'Entrega acompanhada',
+    title: 'Carro novo com seguro encaminhado',
+    description: 'Cotação alinhada ao perfil do motorista, ao uso do veículo e às coberturas mais importantes.',
+    imagePosition: 'center 44%',
+  },
+  {
+    image: clientPeugeotPhoto,
+    alt: 'Cliente em concessionária ao lado de veículo coberto com laço vermelho',
+    meta: 'Retirada do veículo',
+    title: 'Proteção pensada antes de sair rodando',
+    description: 'Atendimento para comparar opções e entender o que muda entre seguradoras, franquias e assistências.',
+    imagePosition: 'center 42%',
+  },
+  {
+    image: clientFiatSuvPhoto,
+    alt: 'Casal sorrindo ao lado de um SUV branco com laço vermelho',
+    meta: 'Seguro contratado',
+    title: 'Decisão tranquila na entrega do carro',
+    description: 'A proposta é explicada em linguagem simples para o cliente contratar sabendo o que está levando.',
+    imagePosition: 'center 38%',
   },
 ];
 

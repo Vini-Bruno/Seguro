@@ -14,6 +14,13 @@ export type TextCard = {
   description: string;
 };
 
+export type ClientProof = TextCard & {
+  image: string;
+  alt: string;
+  meta: string;
+  imagePosition: string;
+};
+
 export type IconCard = TextCard & {
   icon: string;
 };
