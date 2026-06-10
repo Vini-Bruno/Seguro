@@ -1,0 +1,11 @@
+{
+  "installCommand": "npm --prefix seguro-front ci",
+  "buildCommand": "npm --prefix seguro-front run build",
+  "outputDirectory": "seguro-front/dist",
+  "rewrites": [
+    {
+      "source": "/(.*)",
+      "destination": "/index.html"
+    }
+  ]
+}
