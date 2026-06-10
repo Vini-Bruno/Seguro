@@ -22,17 +22,22 @@ export function useQuoteForm(): QuoteFormViewModel {
   const messagePreviewText =
     'Olá! Vim pela página de seguro auto e gostaria de fazer uma cotação gratuita.';
 
+  const sanitizedPhone = phone.trim();
+
   const whatsappHref = useMemo(
-    () =>
-      createWhatsappHref({
+    () => {
+      const lines = [
+        messagePreviewText,
+        ...(sanitizedPhone ? [`Meu WhatsApp: ${sanitizedPhone}`] : []),
+        `Veículo: ${selectedQuoteType.label}`,
+      ];
+
+      return createWhatsappHref({
         phone: siteConfig.contact.whatsappPhone,
-        lines: [
-          messagePreviewText,
-          `Meu WhatsApp: ${phone || 'Não informado'}`,
-          `Veículo: ${selectedQuoteType.label}`,
-        ],
-      }),
-    [messagePreviewText, phone, selectedQuoteType.label],
+        lines,
+      });
+    },
+    [messagePreviewText, sanitizedPhone, selectedQuoteType.label],
   );
 
   return {
