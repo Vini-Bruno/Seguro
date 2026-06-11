@@ -3,7 +3,7 @@ import {
   Car,
   Caravan,
   CarFront,
-  Scooter,
+  Motorbike,
   Truck,
   Van,
   Wrench,
@@ -19,7 +19,7 @@ type VehicleIconProps = {
 
 const vehicleIcons: Record<string, LucideIcon> = {
   car: CarFront,
-  motorcycle: Scooter,
+  motorcycle: Motorbike,
   suv: Car,
   pickup: Caravan,
   van: Van,
