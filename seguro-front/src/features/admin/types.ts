@@ -11,7 +11,7 @@ export type Quote = {
   cep: string | null;
   tipo_moradia: string | null;
   ano_modelo: string | null;
-  under_24: boolean | string | number | null;
+  under_26: boolean | string | number | null;
   uso_veiculo: string | null;
   detalhe_uso_profissional: string | null;
   is_insured: boolean | string | number | null;

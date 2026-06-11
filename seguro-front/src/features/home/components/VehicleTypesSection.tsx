@@ -1,5 +1,38 @@
+import {
+  BriefcaseBusiness,
+  Car,
+  Caravan,
+  CarFront,
+  Scooter,
+  Truck,
+  Van,
+  Wrench,
+  type LucideIcon,
+} from 'lucide-react';
+
 import { vehicleTypes } from '../data/homeContent';
 import { SectionHeading } from './SectionHeading';
+
+type VehicleIconProps = {
+  name: string;
+};
+
+const vehicleIcons: Record<string, LucideIcon> = {
+  car: CarFront,
+  motorcycle: Scooter,
+  suv: Car,
+  pickup: Caravan,
+  van: Van,
+  utility: Wrench,
+  truck: Truck,
+  business: BriefcaseBusiness,
+};
+
+function VehicleIcon({ name }: VehicleIconProps) {
+  const Icon = vehicleIcons[name] ?? CarFront;
+
+  return <Icon aria-hidden="true" focusable="false" strokeWidth={1.8} />;
+}
 
 export function VehicleTypesSection() {
   return (
@@ -16,7 +49,9 @@ export function VehicleTypesSection() {
       <div className="vehicle-grid">
         {vehicleTypes.map((vehicle) => (
           <article className="vehicle-card" key={vehicle.title}>
-            <span aria-hidden="true">{vehicle.icon}</span>
+            <span className="vehicle-card__icon" aria-hidden="true">
+              <VehicleIcon name={vehicle.icon} />
+            </span>
             <div>
               <h3>{vehicle.title}</h3>
               <p>{vehicle.description}</p>

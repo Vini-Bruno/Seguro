@@ -29,14 +29,14 @@ export const quoteTypes: QuoteType[] = [
 ];
 
 export const vehicleTypes: IconCard[] = [
-  { icon: 'AU', title: 'Carro', description: 'Cotação para carro de passeio, hatch, sedan e SUV.' },
-  { icon: 'MT', title: 'Moto', description: 'Opções conforme cilindrada, uso e região de circulação.' },
-  { icon: 'SUV', title: 'SUV', description: 'Alternativas para uso familiar, estrada e rotina urbana.' },
-  { icon: 'PK', title: 'Picape', description: 'Cotação para uso particular, trabalho, rural ou empresa.' },
-  { icon: 'VN', title: 'Van', description: 'Proteção para uso familiar, transporte ou operação.' },
-  { icon: 'UT', title: 'Utilitário', description: 'Avaliação para veículos de serviço, entrega ou apoio.' },
-  { icon: 'CM', title: 'Caminhão', description: 'Análise de aceitação por perfil de uso e seguradora.' },
-  { icon: 'PJ', title: 'Veículo empresarial', description: 'Alternativas para frota, operação ou veículo de empresa.' },
+  { icon: 'car', title: 'Carro', description: 'Cotação para carro de passeio, hatch, sedan e SUV.' },
+  { icon: 'motorcycle', title: 'Moto', description: 'Opções conforme cilindrada, uso e região de circulação.' },
+  { icon: 'suv', title: 'SUV', description: 'Alternativas para uso familiar, estrada e rotina urbana.' },
+  { icon: 'pickup', title: 'Picape', description: 'Cotação para uso particular, trabalho, rural ou empresa.' },
+  { icon: 'van', title: 'Van', description: 'Proteção para uso familiar, transporte ou operação.' },
+  { icon: 'utility', title: 'Utilitário', description: 'Avaliação para veículos de serviço, entrega ou apoio.' },
+  { icon: 'truck', title: 'Caminhão', description: 'Análise de aceitação por perfil de uso e seguradora.' },
+  { icon: 'business', title: 'Veículo empresarial', description: 'Alternativas para frota, operação ou veículo de empresa.' },
 ];
 
 export const benefits: TextCard[] = [

@@ -42,7 +42,7 @@ export function QuoteDetailsModal({ quote, onClose }: QuoteDetailsModalProps) {
     { label: 'Placa', value: formatEmpty(quote.placa) },
     { label: 'Tipo Moradia', value: formatEmpty(quote.tipo_moradia) },
     { label: 'Ano Modelo', value: formatEmpty(quote.ano_modelo) },
-    { label: 'Menor de 24', value: formatBoolean(quote.under_24) },
+    { label: 'Menor de 26', value: formatBoolean(quote.under_26) },
     { label: 'Uso Veículo', value: formatEmpty(quote.uso_veiculo) },
     { label: 'Detalhe Uso Profissional', value: formatEmpty(quote.detalhe_uso_profissional) },
     { label: 'Possui Seguro', value: formatBoolean(quote.is_insured) },
