@@ -12,7 +12,7 @@ export function PrivacySection({ whatsappHref }: PrivacySectionProps) {
         <p>
           Para calcular o seguro, algumas informações podem ser necessárias, como dados do veículo,
           região de circulação e perfil do condutor. Essas informações são utilizadas para atendimento
-          e simulação da cotação, conforme nossa Política de Privacidade.
+          e simulação da cotação, conforme nossa <a href="/politica-de-privacidade">Política de Privacidade</a>.
         </p>
         <p className="privacy-note">
           Ao iniciar a cotação, você autoriza o contato para fins de atendimento e simulação de seguro.

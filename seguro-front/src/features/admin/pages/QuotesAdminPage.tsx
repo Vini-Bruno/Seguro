@@ -3,7 +3,11 @@ import { QuotesTable } from '../components/QuotesTable';
 import { QuoteDetailsModal } from '../components/QuoteDetailsModal';
 import { useQuotesDashboard } from '../hooks/useQuotesDashboard';
 
-export function QuotesAdminPage() {
+type QuotesAdminPageProps = {
+  onLogout: () => void;
+};
+
+export function QuotesAdminPage({ onLogout }: QuotesAdminPageProps) {
   const {
     quotes,
     filteredQuotes,
@@ -30,18 +34,24 @@ export function QuotesAdminPage() {
           <p>Controle simples do pipeline comercial gerado pelo site, WhatsApp e chatbot.</p>
         </div>
 
-        <div className="admin-summary">
-          <div>
-            <strong>{quotes.length}</strong>
-            <span>Total</span>
-          </div>
-          <div>
-            <strong>{newQuotesCount}</strong>
-            <span>Novas</span>
-          </div>
-          <div>
-            <strong>{filteredQuotes.length}</strong>
-            <span>No filtro</span>
+        <div className="admin-header__side">
+          <button className="admin-logout-button" type="button" onClick={onLogout}>
+            Sair
+          </button>
+
+          <div className="admin-summary">
+            <div>
+              <strong>{quotes.length}</strong>
+              <span>Total</span>
+            </div>
+            <div>
+              <strong>{newQuotesCount}</strong>
+              <span>Novas</span>
+            </div>
+            <div>
+              <strong>{filteredQuotes.length}</strong>
+              <span>No filtro</span>
+            </div>
           </div>
         </div>
       </header>

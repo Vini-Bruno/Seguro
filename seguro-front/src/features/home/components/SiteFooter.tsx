@@ -29,6 +29,8 @@ export function SiteFooter({ whatsappHref }: SiteFooterProps) {
               {link.label}
             </a>
           ))}
+          <a href="/politica-de-privacidade">Política de Privacidade</a>
+          <a href="/termos-de-uso">Termos de Uso</a>
         </nav>
 
         <div className="site-footer__contact">

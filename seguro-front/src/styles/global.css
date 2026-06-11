@@ -1199,6 +1199,13 @@ h3 {
   line-height: 1.58;
 }
 
+.privacy-section p a {
+  color: #003146;
+  font-weight: 900;
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+
 .privacy-note {
   font-weight: 800;
 }
@@ -1262,6 +1269,83 @@ h3 {
     #f4f7f9;
 }
 
+.admin-login-shell {
+  min-height: 100vh;
+  display: grid;
+  place-items: center;
+  padding: 28px;
+  background:
+    linear-gradient(135deg, rgba(247, 250, 252, 0.98), rgba(224, 239, 246, 0.72)),
+    #f4f7f9;
+}
+
+.admin-login-card {
+  width: min(430px, 100%);
+  padding: 28px;
+  border: 1px solid rgba(0, 49, 70, 0.1);
+  border-radius: 8px;
+  background: #ffffff;
+  box-shadow: 0 24px 68px rgba(0, 49, 70, 0.12);
+}
+
+.admin-login-card__header span {
+  color: #0a6b96;
+  font-size: 0.82rem;
+  font-weight: 900;
+  text-transform: uppercase;
+}
+
+.admin-login-card__header h1 {
+  margin: 8px 0 0;
+  color: #003146;
+  font-size: 2.22rem;
+  line-height: 1;
+}
+
+.admin-login-card__header p {
+  margin: 12px 0 0;
+  color: #6b7e8a;
+}
+
+.admin-login-form {
+  display: grid;
+  gap: 14px;
+  margin-top: 22px;
+}
+
+.admin-login-form label {
+  display: grid;
+  gap: 7px;
+}
+
+.admin-login-form label > span {
+  color: #6b7e8a;
+  font-size: 0.78rem;
+  font-weight: 900;
+  text-transform: uppercase;
+}
+
+.admin-login-form input {
+  min-height: 46px;
+  border: 1px solid rgba(0, 49, 70, 0.16);
+  border-radius: 8px;
+  padding: 0 13px;
+  color: #003146;
+  background: #ffffff;
+  outline: none;
+}
+
+.admin-login-form input:focus {
+  box-shadow: 0 0 0 4px rgba(18, 140, 74, 0.18);
+}
+
+.admin-login-error {
+  padding: 10px 12px;
+  border-radius: 8px;
+  color: #9f3a38;
+  background: rgba(159, 58, 56, 0.1);
+}
+
 .admin-header,
 .admin-panel {
   width: min(1180px, calc(100% - 40px));
@@ -1294,6 +1378,12 @@ h3 {
   margin: 12px 0 0;
   color: #6b7e8a;
   font-size: 1.02rem;
+}
+
+.admin-header__side {
+  display: grid;
+  gap: 12px;
+  justify-items: end;
 }
 
 .admin-summary {
@@ -1379,7 +1469,8 @@ h3 {
 }
 
 .admin-button,
-.admin-icon-button {
+.admin-icon-button,
+.admin-logout-button {
   min-height: 42px;
   border-radius: 8px;
   color: #ffffff;
@@ -1389,6 +1480,13 @@ h3 {
 
 .admin-button {
   padding: 0 16px;
+}
+
+.admin-logout-button {
+  padding: 0 14px;
+  color: #003146;
+  border: 1px solid rgba(0, 49, 70, 0.14);
+  background: #ffffff;
 }
 
 .admin-button:disabled {
@@ -1576,6 +1674,92 @@ h3 {
   margin: 5px 0 0;
   color: #003146;
   overflow-wrap: anywhere;
+}
+
+/* =============================================
+   LEGAL PAGES
+   ============================================= */
+
+.legal-shell {
+  min-height: 100vh;
+  padding: 42px 0 72px;
+  background:
+    linear-gradient(135deg, rgba(247, 250, 252, 0.98), rgba(224, 239, 246, 0.72)),
+    #f4f7f9;
+}
+
+.legal-page {
+  width: min(880px, calc(100% - 40px));
+  margin: 0 auto;
+  padding: 30px;
+  border: 1px solid rgba(0, 49, 70, 0.1);
+  border-radius: 8px;
+  background: #ffffff;
+  box-shadow: 0 20px 58px rgba(0, 49, 70, 0.08);
+}
+
+.legal-back-link {
+  min-height: 38px;
+  display: inline-flex;
+  align-items: center;
+  margin-bottom: 26px;
+  padding: 0 12px;
+  border-radius: 8px;
+  color: #003146;
+  background: rgba(18, 140, 74, 0.1);
+  font-weight: 900;
+}
+
+.legal-header {
+  padding-bottom: 26px;
+  border-bottom: 1px solid rgba(0, 49, 70, 0.1);
+}
+
+.legal-header span {
+  color: #0a6b96;
+  font-size: 0.82rem;
+  font-weight: 900;
+  text-transform: uppercase;
+}
+
+.legal-header h1 {
+  margin: 8px 0 0;
+  color: #003146;
+  font-size: 3rem;
+  line-height: 1;
+}
+
+.legal-header p {
+  max-width: 700px;
+  margin: 14px 0 0;
+  color: #6b7e8a;
+  font-size: 1.05rem;
+}
+
+.legal-header small {
+  display: block;
+  margin-top: 14px;
+  color: #6b7e8a;
+  font-weight: 800;
+}
+
+.legal-content {
+  display: grid;
+  gap: 24px;
+  padding-top: 28px;
+}
+
+.legal-content h2 {
+  margin: 0;
+  color: #003146;
+  font-size: 1.55rem;
+  line-height: 1.1;
+}
+
+.legal-content p {
+  margin: 10px 0 0;
+  color: #5a6f7b;
+  line-height: 1.7;
 }
 
 /* =============================================
@@ -1868,6 +2052,16 @@ h3 {
   .admin-summary {
     width: 100%;
   }
+
+  .admin-header__side {
+    justify-items: stretch;
+    width: 100%;
+  }
+
+  .admin-logout-button {
+    width: max-content;
+    justify-self: end;
+  }
 }
 
 @media (max-width: 700px) {
@@ -2104,6 +2298,23 @@ h3 {
     font-size: 2.16rem;
   }
 
+  .admin-login-shell {
+    align-items: start;
+    padding: 28px 18px;
+  }
+
+  .admin-login-card {
+    padding: 22px;
+  }
+
+  .admin-login-card__header h1 {
+    font-size: 1.92rem;
+  }
+
+  .admin-logout-button {
+    width: 100%;
+  }
+
   .admin-summary {
     grid-template-columns: 1fr;
   }
@@ -2144,5 +2355,18 @@ h3 {
   .admin-details-grid {
     grid-template-columns: 1fr;
     padding: 12px;
+  }
+
+  .legal-shell {
+    padding: 24px 0 44px;
+  }
+
+  .legal-page {
+    width: calc(100vw - 36px);
+    padding: 22px;
+  }
+
+  .legal-header h1 {
+    font-size: 2.16rem;
   }
 }
