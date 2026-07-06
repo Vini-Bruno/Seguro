@@ -1,5 +1,7 @@
+import clientBmwGsMotoPhoto from '@/assets/client-bmw-gs-moto-seguro.jpeg';
 import clientFiatSuvPhoto from '@/assets/client-fiat-suv-seguro.jpeg';
 import clientPeugeotPhoto from '@/assets/client-peugeot-entrega.jpeg';
+import clientPorschePremiumPhoto from '@/assets/client-porsche-premium-seguro.jpeg';
 import clientVolkswagenPhoto from '@/assets/client-volkswagen-seguro.jpeg';
 
 import type { ClientProof, FaqItem, IconCard, Insurer, NavLink, QuoteType, TextCard, TrustSignal } from '../types';
@@ -182,6 +184,22 @@ export const proofItems: TextCard[] = [
 ];
 
 export const clientProofs: ClientProof[] = [
+  {
+    image: clientPorschePremiumPhoto,
+    alt: 'Cliente ao lado de um Porsche branco durante atendimento de seguro',
+    meta: 'Carro premium',
+    title: 'Carro premium com seguro encaminhado',
+    description: 'Cotação orientada para proteger veículos de maior valor com coberturas adequadas ao perfil.',
+    imagePosition: 'center 74%',
+  },
+  {
+    image: clientBmwGsMotoPhoto,
+    alt: 'Cliente ao lado de uma moto BMW GS em concessionária',
+    meta: 'Seguro para moto',
+    title: 'Seguro para moto com orientação',
+    description: 'Avaliação de opções conforme cilindrada, uso da moto e aceitação das seguradoras.',
+    imagePosition: 'center 56%',
+  },
   {
     image: clientVolkswagenPhoto,
     alt: 'Cliente ao lado de um Volkswagen preto em uma loja de veículos',
