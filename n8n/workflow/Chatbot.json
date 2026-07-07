@@ -65,7 +65,7 @@
             {
               "id": "046a6ba5-6d29-49d2-ad35-7097914afae5",
               "name": "response",
-              "value": "=Oi! Vamos começar sua cotação 🚗\n\nO seguro é para você ou para outra pessoa?\n\nResponda com: *eu* ou *outra pessoa*.",
+              "value": "=Oi! Vamos começar sua cotação 🚗\n\nO seguro é para você ou para outra pessoa?\n\nResponda:\n1. Para mim\n2. Para outra pessoa",
               "type": "string"
             },
             {
@@ -173,7 +173,7 @@
     },
     {
       "parameters": {
-        "jsCode": "const phone = String($node[\"Extract Message Data\"].json[\"phone\"] ?? '').trim();\n\nreturn [\n  {\n    json: {\n      cotacao_id: `cot_${Date.now()}`,\n      phone,\n      step: 'inicio',\n      status: 'em_andamento',\n\n      tipo_cliente: '',\n      nome: '',\n      sobrenome: '',\n      cpf: '',\n      genero: '',\n\n      placa: '',\n      cep: '',\n      ano_modelo: '',\n\n      under_26: '',\n      is_insured: '',\n\n      enviado_leo: false,\n\n      response: '👋 Olá! Vamos começar sua cotação de seguro auto.\\n\\nO seguro é para você ou para outra pessoa?\\n\\nResponda com:\\n✅ Eu\\n👤 Outra pessoa'\n    }\n  }\n];"
+        "jsCode": "const phone = String($node[\"Extract Message Data\"].json[\"phone\"] ?? '').trim();\n\nreturn [\n  {\n    json: {\n      cotacao_id: `cot_${Date.now()}`,\n      phone,\n      step: 'inicio',\n      status: 'em_andamento',\n\n      tipo_cliente: '',\n      nome: '',\n      sobrenome: '',\n      cpf: '',\n      genero: '',\n\n      placa: '',\n      cep: '',\n      ano_modelo: '',\n\n      under_26: '',\n      is_insured: '',\n\n      enviado_leo: false,\n\n      response: 'Oi! Vamos começar sua cotação 🚗\\n\\nO seguro é para você ou para outra pessoa?\\n\\nResponda:\\n1. Para mim\\n2. Para outra pessoa'\n    }\n  }\n];"
       },
       "type": "n8n-nodes-base.code",
       "typeVersion": 2,
@@ -935,6 +935,11 @@
             "node": "HTTP Request1",
             "type": "main",
             "index": 0
+          },
+          {
+            "node": "Edit Fields1",
+            "type": "main",
+            "index": 0
           }
         ],
         [
@@ -988,24 +993,12 @@
     },
     "HTTP Request imagem": {
       "main": [
-        [
-          {
-            "node": "Edit Fields1",
-            "type": "main",
-            "index": 0
-          }
-        ]
+        []
       ]
     },
     "HTTP Request pdf": {
       "main": [
-        [
-          {
-            "node": "Edit Fields1",
-            "type": "main",
-            "index": 0
-          }
-        ]
+        []
       ]
     },
     "If tem apólice": {
@@ -1017,13 +1010,7 @@
             "index": 0
           }
         ],
-        [
-          {
-            "node": "Edit Fields1",
-            "type": "main",
-            "index": 0
-          }
-        ]
+        []
       ]
     }
   },
