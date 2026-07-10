@@ -7,13 +7,13 @@
         "path": "insurance-chatbot",
         "options": {}
       },
-      "id": "17431ff3-ab6e-454a-9419-11ef0f62fe59",
+      "id": "6868140d-29ea-4100-be6f-bee3309f5b28",
       "name": "Receive WhatsApp Message2",
       "type": "n8n-nodes-base.webhook",
       "typeVersion": 2.1,
       "position": [
-        2912,
-        3504
+        15792,
+        11824
       ],
       "webhookId": "ad80885e-8bd9-46b5-84c3-49f99400cf85"
     },
@@ -41,10 +41,10 @@
       "type": "n8n-nodes-base.set",
       "typeVersion": 3.4,
       "position": [
-        6144,
-        3696
+        19024,
+        12016
       ],
-      "id": "4d27867b-bed4-49da-ae3f-1c93bf7ddb3b",
+      "id": "222a708a-0b29-4beb-a220-4effa5300145",
       "name": "Edit Fields2"
     },
     {
@@ -75,10 +75,10 @@
       "type": "n8n-nodes-base.if",
       "typeVersion": 2.3,
       "position": [
-        4416,
-        3440
+        17296,
+        11760
       ],
-      "id": "941e4f7e-e885-4fcb-a03c-d408119f0c21",
+      "id": "64f15996-c623-46a0-ad07-8e70aeb7fea7",
       "name": "If4"
     },
     {
@@ -111,10 +111,10 @@
       "type": "n8n-nodes-base.set",
       "typeVersion": 3.4,
       "position": [
-        6800,
-        3328
+        19680,
+        11648
       ],
-      "id": "8e7e9593-f09f-47e0-af5b-6a64e230e0f1",
+      "id": "d3e08f52-96ca-45ae-be1d-c8e9a6662a6e",
       "name": "Edit Fields3"
     },
     {
@@ -124,10 +124,10 @@
       "type": "n8n-nodes-base.code",
       "typeVersion": 2,
       "position": [
-        4832,
-        3568
+        17712,
+        11888
       ],
-      "id": "bb288602-9423-45eb-bb5c-5cf6fd1aceb1",
+      "id": "fb272984-7a3e-4f8c-9d9b-694c239e6e1a",
       "name": "Create New Quote Data1"
     },
     {
@@ -136,13 +136,13 @@
         "responseMode": "responseNode",
         "options": {}
       },
-      "id": "3e10e7f6-b577-4a91-80cd-4fde5abcd032",
+      "id": "9c58fb61-745e-46b5-9b4a-5791b3dbcfa8",
       "name": "Receive WhatsApp Message3",
       "type": "n8n-nodes-base.webhook",
       "typeVersion": 2.1,
       "position": [
-        3520,
-        1888
+        16400,
+        10208
       ],
       "webhookId": "ad80885e-8bd9-46b5-84c3-49f99400cf85"
     },
@@ -153,10 +153,10 @@
       "type": "n8n-nodes-base.code",
       "typeVersion": 2,
       "position": [
-        3760,
-        1856
+        16640,
+        10176
       ],
-      "id": "07fb3743-6f97-4d7d-84f0-dc81e398c567",
+      "id": "f503f416-32cd-4875-b128-bf09d5a3fe10",
       "name": "Code in JavaScript3"
     },
     {
@@ -168,10 +168,10 @@
       "type": "n8n-nodes-base.respondToWebhook",
       "typeVersion": 1.5,
       "position": [
-        3984,
-        1744
+        16864,
+        10064
       ],
-      "id": "3d475462-c774-4744-8205-92a1fb5ebf49",
+      "id": "51729da3-0e21-4da1-9f29-7f9885809897",
       "name": "Respond to Webhook"
     },
     {
@@ -199,10 +199,10 @@
       "type": "n8n-nodes-base.httpRequest",
       "typeVersion": 4.4,
       "position": [
-        7232,
-        3632
+        20112,
+        11952
       ],
-      "id": "b56dae90-ad85-4867-b62a-ecf6da5ee89a",
+      "id": "752a71ab-628e-4dc7-8157-ce4877610cec",
       "name": "HTTP Request2",
       "executeOnce": true
     },
@@ -234,10 +234,10 @@
       "type": "n8n-nodes-base.if",
       "typeVersion": 2.3,
       "position": [
-        3552,
-        3248
+        16432,
+        11568
       ],
-      "id": "65e42d24-b057-4277-a377-76154554a7be",
+      "id": "c5c150fa-fff8-4b3c-b7b0-5b09158acd93",
       "name": "If5"
     },
     {
@@ -448,10 +448,10 @@
       "type": "n8n-nodes-base.postgres",
       "typeVersion": 2.6,
       "position": [
-        5424,
-        3680
+        18304,
+        12000
       ],
-      "id": "6abeed09-6f7c-4723-a911-3c9b496db27d",
+      "id": "b5509bcd-1cbf-4849-9cc3-8687969767d6",
       "name": "Insert rows in a table1",
       "credentials": {
         "postgres": {
@@ -469,10 +469,10 @@
       "type": "n8n-nodes-base.postgres",
       "typeVersion": 2.6,
       "position": [
-        4064,
-        3600
+        16944,
+        11920
       ],
-      "id": "a53c3dca-3e7a-4e26-af32-b4c33e1da494",
+      "id": "d7850d47-f6bd-4ed5-befe-fd913fd9bc4e",
       "name": "Execute a SQL query3",
       "alwaysOutputData": true,
       "credentials": {
@@ -491,10 +491,10 @@
       "type": "n8n-nodes-base.postgres",
       "typeVersion": 2.6,
       "position": [
-        4976,
-        3264
+        17856,
+        11584
       ],
-      "id": "09b8b35b-525f-4747-8b23-1c9dbb15a8b2",
+      "id": "ed514b57-df0f-4c1f-9332-7e6af69a958e",
       "name": "Execute a SQL query4",
       "credentials": {
         "postgres": {
@@ -531,10 +531,10 @@
       "type": "n8n-nodes-base.if",
       "typeVersion": 2.3,
       "position": [
-        5296,
-        3168
+        18176,
+        11488
       ],
-      "id": "cfb6ec98-633b-4594-90e6-ef3f58806faa",
+      "id": "43f82456-0d4b-4994-94d5-3a4495397835",
       "name": "If6"
     },
     {
@@ -556,17 +556,48 @@
         },
         "sendBody": true,
         "specifyBody": "json",
-        "jsonBody": "={{ {\n  \"messaging_product\": \"whatsapp\",\n  \"to\": \"5518997774785\",\n  \"type\": \"template\",\n  \"template\": {\n    \"name\": \"nova_cotacao_leo\",\n    \"language\": {\n      \"code\": \"pt_BR\"\n    },\n    \"components\": [\n      {\n        \"type\": \"body\",\n        \"parameters\": [\n          {\n            \"type\": \"text\",\n            \"text\": String((($node[\"JavaScript\"].json.nome || \"\") + \" \" + ($node[\"JavaScript\"].json.sobrenome || \"\")).trim() || \"Nao informado\")\n          },\n          {\n            \"type\": \"text\",\n            \"text\": String($node[\"JavaScript\"].json.phone || \"Nao informado\")\n          },\n          {\n            \"type\": \"text\",\n            \"text\": String(($node[\"JavaScript\"].json.placa || \"Sem placa\") + \" - \" + ($node[\"JavaScript\"].json.ano_modelo || \"Sem ano/modelo\"))\n          },\n          {\n            \"type\": \"text\",\n            \"text\": String($node[\"JavaScript\"].json.uso_veiculo || \"Nao informado\")\n          }\n        ]\n      }\n    ]\n  }\n} }}",
+        "jsonBody": "={{\n  {\n    messaging_product: \"whatsapp\",\n    to: \"5518997774785\",\n    type: \"template\",\n    template: {\n      name: \"nova_cotacao_leo\",\n      language: {\n        code: \"pt_BR\"\n      },\n      components: [\n        {\n          type: \"body\",\n          parameters: [\n            {\n              type: \"text\",\n              text:\n                \"Cliente: \" +\n                String(\n                  (\n                    ($node[\"JavaScript\"].json.nome || \"\") +\n                    \" \" +\n                    ($node[\"JavaScript\"].json.sobrenome || \"\")\n                  ).trim() || \"Nao informado\"\n                ) +\n                \" | Telefone: \" +\n                String(\n                  $node[\"JavaScript\"].json.phone || \"Nao informado\"\n                ) +\n                \" | Veiculo: \" +\n                String(\n                  ($node[\"JavaScript\"].json.placa || \"Sem placa\") +\n                  \" - \" +\n                  ($node[\"JavaScript\"].json.ano_modelo || \"Sem ano/modelo\")\n                ) +\n                \" | Uso: \" +\n                String(\n                  $node[\"JavaScript\"].json.uso_veiculo || \"Nao informado\"\n                )\n            }\n          ]\n        }\n      ]\n    }\n  }\n}}",
         "options": {}
       },
       "type": "n8n-nodes-base.httpRequest",
       "typeVersion": 4.4,
       "position": [
-        5552,
-        2736
+        18432,
+        11056
       ],
-      "id": "ad8dbbed-d775-45c8-9ee6-167d16271141",
-      "name": "HTTP Request3"
+      "id": "553410f0-bc54-4a1d-b072-438ba61eb4df",
+      "name": "Enviar resumo - Léo"
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "https://graph.facebook.com/v25.0/1141142745749437/messages",
+        "sendHeaders": true,
+        "headerParameters": {
+          "parameters": [
+            {
+              "name": "Authorization",
+              "value": "Bearer EAAdVZA2UozMkBRtsdo4TdWhQtSnMp1W9kAFbUdZCVZB7yfnysywaTLFIjiRoiTuuCWUwG6WRXZBuJWk51pj3vwGco6uEMBLtQf1MDWv9BK2y2SQkPR8yKzCsgWg3FroTM9AyBDibZCl9GeyGivMtr4WhUZBNac0NpZBIyTmhpaRfX4xs9WZCzZBPmZAaDSPTH8vdVswgZDZD"
+            },
+            {
+              "name": "Content-Type",
+              "value": "application/json"
+            }
+          ]
+        },
+        "sendBody": true,
+        "specifyBody": "json",
+        "jsonBody": "={{\n  {\n    messaging_product: \"whatsapp\",\n    to: \"5518981182110\",\n    type: \"template\",\n    template: {\n      name: \"nova_cotacao_leo\",\n      language: {\n        code: \"pt_BR\"\n      },\n      components: [\n        {\n          type: \"body\",\n          parameters: [\n            {\n              type: \"text\",\n              text:\n                \"Cliente: \" +\n                String(\n                  (\n                    ($node[\"JavaScript\"].json.nome || \"\") +\n                    \" \" +\n                    ($node[\"JavaScript\"].json.sobrenome || \"\")\n                  ).trim() || \"Nao informado\"\n                ) +\n                \" | Telefone: \" +\n                String(\n                  $node[\"JavaScript\"].json.phone || \"Nao informado\"\n                ) +\n                \" | Veiculo: \" +\n                String(\n                  ($node[\"JavaScript\"].json.placa || \"Sem placa\") +\n                  \" - \" +\n                  ($node[\"JavaScript\"].json.ano_modelo || \"Sem ano/modelo\")\n                ) +\n                \" | Uso: \" +\n                String(\n                  $node[\"JavaScript\"].json.uso_veiculo || \"Nao informado\"\n                )\n            }\n          ]\n        }\n      ]\n    }\n  }\n}}",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.4,
+      "position": [
+        18720,
+        10800
+      ],
+      "id": "b9d642f0-65b5-4b93-9f43-3f612d7ad101",
+      "name": "Enviar resumo - Sócio"
     },
     {
       "parameters": {
@@ -577,10 +608,10 @@
       "type": "n8n-nodes-base.postgres",
       "typeVersion": 2.6,
       "position": [
-        6624,
-        2800
+        19504,
+        11120
       ],
-      "id": "e8fa299e-bb43-4262-83e7-de92a3b614fc",
+      "id": "a48e5dab-18c5-4fc0-90bc-e7798e20aa44",
       "name": "Execute a SQL query5",
       "credentials": {
         "postgres": {
@@ -617,10 +648,10 @@
       "type": "n8n-nodes-base.if",
       "typeVersion": 2.3,
       "position": [
-        7664,
-        2736
+        20544,
+        11056
       ],
-      "id": "d53ac08a-b365-4ab4-84e3-43aa5eb091b8",
+      "id": "b5e3325d-0693-4e29-9c10-7172d08dc4ce",
       "name": "If7"
     },
     {
@@ -648,11 +679,42 @@
       "type": "n8n-nodes-base.httpRequest",
       "typeVersion": 4.4,
       "position": [
-        8032,
-        2432
+        20912,
+        10752
       ],
-      "id": "0f73f5b3-7032-4cd5-a564-b8d838a831e3",
-      "name": "HTTP Request imagem1"
+      "id": "8832a18a-6c4b-4eaf-9c6f-b73dae8c4911",
+      "name": "Enviar imagem - Léo"
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "https://graph.facebook.com/v25.0/1141142745749437/messages",
+        "sendHeaders": true,
+        "headerParameters": {
+          "parameters": [
+            {
+              "name": "Authorization",
+              "value": "Bearer EAAdVZA2UozMkBRtsdo4TdWhQtSnMp1W9kAFbUdZCVZB7yfnysywaTLFIjiRoiTuuCWUwG6WRXZBuJWk51pj3vwGco6uEMBLtQf1MDWv9BK2y2SQkPR8yKzCsgWg3FroTM9AyBDibZCl9GeyGivMtr4WhUZBNac0NpZBIyTmhpaRfX4xs9WZCzZBPmZAaDSPTH8vdVswgZDZD"
+            },
+            {
+              "name": "Content-Type",
+              "value": "application/json"
+            }
+          ]
+        },
+        "sendBody": true,
+        "specifyBody": "json",
+        "jsonBody": "={\n  \"messaging_product\": \"whatsapp\",\n  \"to\": \"5518981182110\",\n  \"type\": \"image\",\n  \"image\": {\n    \"id\": \"{{ $node['JavaScript'].json['apolice_media_id'] }}\"\n  }\n}",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.4,
+      "position": [
+        21264,
+        10752
+      ],
+      "id": "abcb7b17-75cd-44da-932a-fd6a0f271c01",
+      "name": "Enviar imagem - Sócio"
     },
     {
       "parameters": {
@@ -679,11 +741,42 @@
       "type": "n8n-nodes-base.httpRequest",
       "typeVersion": 4.4,
       "position": [
-        7904,
-        2912
+        20784,
+        11232
       ],
-      "id": "617dbb31-8481-4ab3-850f-6fc286f8e517",
-      "name": "HTTP Request pdf1"
+      "id": "04b75fbd-bb14-4f0d-9687-585728033024",
+      "name": "Enviar PDF - Léo"
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "https://graph.facebook.com/v25.0/1141142745749437/messages",
+        "sendHeaders": true,
+        "headerParameters": {
+          "parameters": [
+            {
+              "name": "Authorization",
+              "value": "Bearer EAAdVZA2UozMkBRtsdo4TdWhQtSnMp1W9kAFbUdZCVZB7yfnysywaTLFIjiRoiTuuCWUwG6WRXZBuJWk51pj3vwGco6uEMBLtQf1MDWv9BK2y2SQkPR8yKzCsgWg3FroTM9AyBDibZCl9GeyGivMtr4WhUZBNac0NpZBIyTmhpaRfX4xs9WZCzZBPmZAaDSPTH8vdVswgZDZD"
+            },
+            {
+              "name": "Content-Type",
+              "value": "application/json"
+            }
+          ]
+        },
+        "sendBody": true,
+        "specifyBody": "json",
+        "jsonBody": "={\n  \"messaging_product\": \"whatsapp\",\n  \"to\": \"5518981182110\",\n  \"type\": \"document\",\n  \"document\": {\n    \"id\": \"{{ $node['JavaScript'].json['apolice_media_id'] }}\"\n  }\n}",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.4,
+      "position": [
+        21136,
+        11232
+      ],
+      "id": "e4e2363a-40f6-4657-b8dd-bd56b543c478",
+      "name": "Enviar PDF - Sócio"
     },
     {
       "parameters": {
@@ -714,10 +807,10 @@
       "type": "n8n-nodes-base.if",
       "typeVersion": 2.3,
       "position": [
-        6976,
-        2576
+        19856,
+        10896
       ],
-      "id": "b01cf751-486f-40f0-9882-15cf561ab209",
+      "id": "667ed638-ca11-4d29-bde0-3e4afbf9effc",
       "name": "If tem apólice1"
     },
     {
@@ -752,13 +845,13 @@
         },
         "options": {}
       },
-      "id": "39b302e3-77dc-44f2-bb52-7467ce419685",
+      "id": "b8ce328e-02ae-43d9-a2b0-57a38c933d15",
       "name": "Extract Message Data",
       "type": "n8n-nodes-base.set",
       "typeVersion": 3.4,
       "position": [
-        3280,
-        3376
+        16160,
+        11696
       ]
     },
     {
@@ -768,10 +861,10 @@
       "type": "n8n-nodes-base.code",
       "typeVersion": 2,
       "position": [
-        4768,
-        3264
+        17648,
+        11584
       ],
-      "id": "52f8ff41-4f41-49f3-8458-486f53883b7f",
+      "id": "63254dcb-03a7-4e31-9bfd-234018d8230c",
       "name": "JavaScript"
     }
   ],
@@ -909,7 +1002,12 @@
       "main": [
         [
           {
-            "node": "HTTP Request3",
+            "node": "Enviar resumo - Léo",
+            "type": "main",
+            "index": 0
+          },
+          {
+            "node": "Enviar resumo - Sócio",
             "type": "main",
             "index": 0
           },
@@ -928,7 +1026,7 @@
         ]
       ]
     },
-    "HTTP Request3": {
+    "Enviar resumo - Léo": {
       "main": [
         [
           {
@@ -954,14 +1052,24 @@
       "main": [
         [
           {
-            "node": "HTTP Request imagem1",
+            "node": "Enviar imagem - Léo",
+            "type": "main",
+            "index": 0
+          },
+          {
+            "node": "Enviar imagem - Sócio",
             "type": "main",
             "index": 0
           }
         ],
         [
           {
-            "node": "HTTP Request pdf1",
+            "node": "Enviar PDF - Léo",
+            "type": "main",
+            "index": 0
+          },
+          {
+            "node": "Enviar PDF - Sócio",
             "type": "main",
             "index": 0
           }
@@ -1007,7 +1115,7 @@
     "executionOrder": "v1",
     "binaryMode": "separate"
   },
-  "versionId": "f5f0afae-8588-4f07-93ad-6c26ef99b74c",
+  "versionId": "1ed3234c-b41f-4ed9-9631-7c6e29f3d693",
   "meta": {
     "templateCredsSetupCompleted": true,
     "instanceId": "bcec5bf2373c41b060b7c71fdbea1b0f2423bdd87f36c1eb84873ed3fbc24041"
