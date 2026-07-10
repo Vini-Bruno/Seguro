@@ -610,7 +610,7 @@
         },
         "sendBody": true,
         "specifyBody": "json",
-        "jsonBody": "={\n  \"messaging_product\": \"whatsapp\",\n  \"to\": \"5518997774785\",\n  \"type\": \"text\",\n  \"text\": {\n    \"body\": {{ JSON.stringify($node[\"Code in JavaScript\"].json[\"leo_message\"]) }}\n  }\n}",
+        "jsonBody": "={\n  \"messaging_product\": \"whatsapp\",\n  \"to\": \"5518997774785\",\n  \"type\": \"template\",\n  \"template\": {\n    \"name\": \"nova_cotacao_leo\",\n    \"language\": {\n      \"code\": \"pt_BR\"\n    },\n    \"components\": [\n      {\n        \"type\": \"body\",\n        \"parameters\": [\n          {\n            \"type\": \"text\",\n            \"text\": \"{{ (($node['Code in JavaScript'].json['nome'] || '') + ' ' + ($node['Code in JavaScript'].json['sobrenome'] || '')).trim() || 'Nao informado' }}\"\n          },\n          {\n            \"type\": \"text\",\n            \"text\": \"{{ $node['Code in JavaScript'].json['phone'] || 'Nao informado' }}\"\n          },\n          {\n            \"type\": \"text\",\n            \"text\": \"{{ (($node['Code in JavaScript'].json['placa'] || 'Sem placa') + ' - ' + ($node['Code in JavaScript'].json['ano_modelo'] || 'Sem ano/modelo')) }}\"\n          },\n          {\n            \"type\": \"text\",\n            \"text\": \"{{ $node['Code in JavaScript'].json['uso_veiculo'] || 'Nao informado' }}\"\n          }\n        ]\n      }\n    ]\n  }\n}",
         "options": {}
       },
       "type": "n8n-nodes-base.httpRequest",
