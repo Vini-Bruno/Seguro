@@ -7,56 +7,15 @@
         "path": "insurance-chatbot",
         "options": {}
       },
-      "id": "44150e89-e394-4bdf-9187-3aa83f3f783c",
-      "name": "Receive WhatsApp Message",
+      "id": "17431ff3-ab6e-454a-9419-11ef0f62fe59",
+      "name": "Receive WhatsApp Message2",
       "type": "n8n-nodes-base.webhook",
       "typeVersion": 2.1,
       "position": [
-        -864,
-        1472
+        2912,
+        3504
       ],
       "webhookId": "ad80885e-8bd9-46b5-84c3-49f99400cf85"
-    },
-    {
-      "parameters": {
-        "assignments": {
-          "assignments": [
-            {
-              "id": "id-1",
-              "name": "phone",
-              "value": "={{ $json.body.entry?.[0]?.changes?.[0]?.value?.messages?.[0]?.from ?? '' }}",
-              "type": "string"
-            },
-            {
-              "id": "id-2",
-              "name": "message",
-              "value": "={{ \n  $json.body.entry[0].changes[0].value.messages[0].text?.body \n  ?? $json.body.entry[0].changes[0].value.messages[0].image?.id\n  ?? $json.body.entry[0].changes[0].value.messages[0].document?.id\n  ?? ''\n}}",
-              "type": "string"
-            },
-            {
-              "id": "6ec159e3-7a22-4f60-b007-3cd11c8c178b",
-              "name": "message_type",
-              "value": "={{ $json.body.entry[0].changes[0].value.messages[0].type ?? '' }}",
-              "type": "string"
-            },
-            {
-              "id": "11f89664-42f3-42e4-b2a5-b81a871adc2a",
-              "name": "media_id",
-              "value": "={{   $json.body.entry[0].changes[0].value.messages[0].image?.id   ?? $json.body.entry[0].changes[0].value.messages[0].document?.id   ?? '' }}",
-              "type": "string"
-            }
-          ]
-        },
-        "options": {}
-      },
-      "id": "80aa68b1-a064-4423-9853-91a2aebfb3ae",
-      "name": "Extract Message Data",
-      "type": "n8n-nodes-base.set",
-      "typeVersion": 3.4,
-      "position": [
-        -496,
-        1344
-      ]
     },
     {
       "parameters": {
@@ -82,11 +41,11 @@
       "type": "n8n-nodes-base.set",
       "typeVersion": 3.4,
       "position": [
-        2368,
-        1664
+        6144,
+        3696
       ],
-      "id": "3910f32f-164f-4781-9b08-4561dfbd1059",
-      "name": "Edit Fields"
+      "id": "4d27867b-bed4-49da-ae3f-1c93bf7ddb3b",
+      "name": "Edit Fields2"
     },
     {
       "parameters": {
@@ -116,24 +75,11 @@
       "type": "n8n-nodes-base.if",
       "typeVersion": 2.3,
       "position": [
-        640,
-        1408
+        4416,
+        3440
       ],
-      "id": "ad4f9c02-c9ee-4766-8aca-a3eff10101c2",
-      "name": "If"
-    },
-    {
-      "parameters": {
-        "jsCode": "const item = $input.first().json;\n\nconst step = String(item.step ?? '')\n  .normalize('NFD')\n  .replace(/[\\u0300-\\u036f]/g, '')\n  .replace(/\\s+/g, '')\n  .toLowerCase();\n\nconst rawMessage = String($node[\"Extract Message Data\"].json[\"message\"] ?? '').trim();\n\nconst message = rawMessage\n  .normalize('NFD')\n  .replace(/[\\u0300-\\u036f]/g, '')\n  .trim()\n  .toLowerCase();\n\nlet updateFields = {};\nlet nextStep = step;\nlet response = '';\nlet status = String(item.status ?? 'em_andamento');\n\nconst onlyDigits = (value) => String(value ?? '').replace(/\\D/g, '');\n\nconst simNao = (value) => {\n  if (['1', 'sim', 's'].includes(value)) return 'Sim';\n  if (['2', 'nao', 'não', 'n'].includes(value)) return 'Não';\n  return value;\n};\n\nconst formatCPF = (value) => {\n  const cpf = onlyDigits(value);\n  if (cpf.length !== 11) return value ?? '';\n  return cpf.replace(/(\\d{3})(\\d{3})(\\d{3})(\\d{2})/, '$1.$2.$3-$4');\n};\n\nconst formatCEP = (value) => {\n  const cep = onlyDigits(value);\n  if (cep.length !== 8) return value ?? '';\n  return cep.replace(/(\\d{5})(\\d{3})/, '$1-$2');\n};\n\nconst pergunta = {\n  inicio: 'Oi! Vamos começar sua cotação 🚗\\n\\nO seguro é para você ou para outra pessoa?\\n\\nResponda:\\n1. Para mim\\n2. Para outra pessoa',\n  nome: 'Qual é o seu primeiro nome?',\n  sobrenome: 'Agora me informe seu sobrenome:',\n  cpf: 'Qual é o seu CPF?\\n\\nPode enviar apenas os números ou no formato:\\n000.000.000-00',\n  placa: 'Qual é a placa do veículo?\\n\\nExemplos:\\nABC1234 ou ABC1D23',\n  cep: 'Qual é o CEP de pernoite do veículo?\\n\\nExemplo: 15500-000',\n  tipo_moradia: 'Você mora em casa ou apartamento?\\n\\nResponda:\\n1. Casa\\n2. Apartamento',\n  ano_modelo: 'Qual é o ano/modelo do veículo?\\n\\nExemplo: 2022/2023',\n  quase_final: 'Estamos quase acabando...',\n  under_26: 'Existe algum condutor com menos de 26 anos?\\n\\nResponda:\\n1. Sim\\n2. Não',\n  uso_veiculo: 'O veículo é utilizado para lazer/ida e volta ao trabalho ou de forma profissional?\\n\\nResponda:\\n1. Lazer/ida e volta ao trabalho\\n2. De forma profissional',\n  detalhe_uso_profissional: 'Você utiliza para Uber, aplicativo, entregas ou prestação de serviço?',\n  is_insured: 'Atualmente o veículo possui seguro?\\n\\nResponda:\\n1. Sim\\n2. Não',\n  apolice: 'Envie a apólice atual em PDF ou foto.'\n};\n\nconst getPergunta = (stepName) => pergunta[String(stepName ?? '').toLowerCase()] ?? 'Vamos continuar de onde paramos.';\n\nconst respostaOpcao = (value, opcoes) => {\n  if (opcoes[value]) return opcoes[value];\n  return null;\n};\n\nconst montarResumoCliente = (data) => {\n  const detalheUso =\n    data.detalhe_uso_profissional &&\n    data.detalhe_uso_profissional !== 'null'\n      ? `🧾 Detalhe uso profissional: ${data.detalhe_uso_profissional}\\n`\n      : '';\n\n  const apolice =\n    data.apolice_recebida &&\n    data.apolice_recebida !== 'Não se aplica' &&\n    data.apolice_recebida !== 'null'\n      ? `📄 Apólice recebida: ${data.apolice_recebida}\\n`\n      : '';\n\n  return `📋 RESUMO DA SUA COTAÇÃO\n\n👤 Nome: ${data.nome ?? ''} ${data.sobrenome ?? ''}\n🪪 CPF: ${formatCPF(data.cpf)}\n🚗 Placa: ${data.placa ?? ''}\n📍 CEP: ${formatCEP(data.cep)}\n🏠 Moradia: ${data.tipo_moradia ?? ''}\n📅 Ano/modelo: ${data.ano_modelo ?? ''}\n👥 Condutor menor de 26 anos: ${simNao(String(data.under_26 ?? '').toLowerCase())}\n🚘 Uso do veículo: ${data.uso_veiculo ?? ''}\n${detalheUso}🛡️ Possui seguro atual: ${simNao(String(data.is_insured ?? '').toLowerCase())}\n${apolice}\n✅ Cotação enviada com sucesso!\n\nRecebemos suas informações e já encaminhamos sua solicitação para nossa equipe.\n\n📞 Em breve um consultor entrará em contato pelo WhatsApp para apresentar as melhores opções de seguro para o seu perfil e veículo.\n\nObrigado pela confiança! 🚗🛡️`;\n};\n\nconst montarResumoLeo = (data) => {\n  const detalheUso =\n    data.detalhe_uso_profissional &&\n    data.detalhe_uso_profissional !== 'null'\n      ? data.detalhe_uso_profissional\n      : 'Nao informado';\n\n  const apolice =\n    data.apolice_recebida &&\n    data.apolice_recebida !== 'Não se aplica' &&\n    data.apolice_recebida !== 'null'\n      ? data.apolice_recebida\n      : 'Nao se aplica';\n\n  return `NOVA COTACAO FINALIZADA\n\nCliente: ${data.nome ?? ''} ${data.sobrenome ?? ''}\nTelefone: ${data.phone ?? ''}\nCPF: ${formatCPF(data.cpf)}\nPlaca: ${data.placa ?? ''}\nCEP: ${formatCEP(data.cep)}\nMoradia: ${data.tipo_moradia ?? ''}\nAno/modelo: ${data.ano_modelo ?? ''}\nMenor de 26 anos: ${simNao(String(data.under_26 ?? '').toLowerCase())}\nUso do veiculo: ${data.uso_veiculo ?? ''}\nDetalhe uso profissional: ${detalheUso}\nPossui seguro atual: ${simNao(String(data.is_insured ?? '').toLowerCase())}\nApolice recebida: ${apolice}\n\nEntrar em contato com o cliente.`;\n};\n\nconst isValidCPF = (cpf) => {\n  const cleaned = onlyDigits(cpf);\n  if (cleaned.length !== 11) return false;\n  if (/^(\\d)\\1{10}$/.test(cleaned)) return false;\n\n  let sum = 0;\n  for (let i = 0; i < 9; i++) sum += Number(cleaned[i]) * (10 - i);\n\n  let firstDigit = (sum * 10) % 11;\n  if (firstDigit === 10) firstDigit = 0;\n  if (firstDigit !== Number(cleaned[9])) return false;\n\n  sum = 0;\n  for (let i = 0; i < 10; i++) sum += Number(cleaned[i]) * (11 - i);\n\n  let secondDigit = (sum * 10) % 11;\n  if (secondDigit === 10) secondDigit = 0;\n\n  return secondDigit === Number(cleaned[10]);\n};\n\nconst isValidCEP = (value) => onlyDigits(value).length === 8;\n\nconst isValidAnoModelo = (value) => {\n  const match = String(value).match(/(19|20)\\d{2}\\s*\\/?\\s*(19|20)?\\d{2}/);\n  return Boolean(match);\n};\n\nconst isValidPlaca = (value) => {\n  const cleaned = String(value).toUpperCase().replace(/[^A-Z0-9]/g, '');\n  const oldPlate = /^[A-Z]{3}\\d{4}$/;\n  const mercosul = /^[A-Z]{3}\\d[A-Z]\\d{2}$/;\n  return oldPlate.test(cleaned) || mercosul.test(cleaned);\n};\n\nif (message === 'reiniciar' || message === 'nova cotacao' || message === 'nova cotação') {\n  updateFields = {\n    tipo_cliente: '',\n    nome: '',\n    sobrenome: '',\n    cpf: '',\n    placa: '',\n    cep: '',\n    ano_modelo: '',\n    under_26: '',\n    is_insured: '',\n    tipo_moradia: '',\n    uso_veiculo: '',\n    detalhe_uso_profissional: '',\n    apolice_recebida: '',\n    apolice_media_id: null,\n    apolice_tipo: null,\n    leo_message: null,\n    enviado_leo: false\n  };\n\n  nextStep = 'inicio';\n  status = 'em_andamento';\n  response = pergunta.inicio;\n}\n\nelse if (step === 'finalizado') {\n  response = 'Sua cotação já foi finalizada.\\n\\nSe quiser começar outra cotação, digite:\\nNova cotação';\n  nextStep = 'finalizado';\n  status = 'finalizado';\n}\n\nelse if (step === 'inicio') {\n  const tipoCliente = respostaOpcao(message, {\n    '1': 'Para mim',\n    '2': 'Para outra pessoa',\n    'eu': 'Para mim',\n    'para mim': 'Para mim',\n    'pra mim': 'Para mim',\n    'outra pessoa': 'Para outra pessoa'\n  });\n\n  if (!tipoCliente) {\n    response = `Resposta inválida.\\n\\n${pergunta.inicio}`;\n    nextStep = step;\n  } else {\n    updateFields.tipo_cliente = tipoCliente;\n    nextStep = 'nome';\n    response = pergunta.nome;\n  }\n}\n\nelse if (step === 'nome') {\n  if (rawMessage.length < 2) {\n    response = `Nome inválido.\\n\\n${pergunta.nome}`;\n    nextStep = step;\n  } else {\n    updateFields.nome = rawMessage;\n    nextStep = 'sobrenome';\n    response = `Prazer, ${rawMessage}!\\n\\n${pergunta.sobrenome}`;\n  }\n}\n\nelse if (step === 'sobrenome') {\n  if (rawMessage.length < 2) {\n    response = `Sobrenome inválido.\\n\\n${pergunta.sobrenome}`;\n    nextStep = step;\n  } else {\n    updateFields.sobrenome = rawMessage;\n    nextStep = 'cpf';\n    response = pergunta.cpf;\n  }\n}\n\nelse if (step === 'cpf') {\n  if (!isValidCPF(rawMessage)) {\n    response = 'CPF inválido.\\n\\nPor favor, envie um CPF válido com 11 dígitos.';\n    nextStep = step;\n  } else {\n    updateFields.cpf = onlyDigits(rawMessage);\n    nextStep = 'placa';\n    response = pergunta.placa;\n  }\n}\n\nelse if (step === 'placa') {\n  if (!isValidPlaca(rawMessage)) {\n    response = 'Placa inválida.\\n\\nEnvie uma placa válida, como:\\nABC1234 ou ABC1D23';\n    nextStep = step;\n  } else {\n    updateFields.placa = rawMessage.toUpperCase().replace(/[^A-Z0-9]/g, '');\n    nextStep = 'cep';\n    response = pergunta.cep;\n  }\n}\n\nelse if (step === 'cep') {\n  if (!isValidCEP(rawMessage)) {\n    response = 'CEP inválido.\\n\\nEnvie um CEP com 8 dígitos.\\nExemplo: 15500-000';\n    nextStep = step;\n  } else {\n    updateFields.cep = onlyDigits(rawMessage);\n    nextStep = 'tipo_moradia';\n    response = pergunta.tipo_moradia;\n  }\n}\n\nelse if (step === 'tipo_moradia') {\n  const moradia = respostaOpcao(message, {\n    '1': 'Casa',\n    '2': 'Apartamento',\n    'casa': 'Casa',\n    'apartamento': 'Apartamento',\n    'apto': 'Apartamento'\n  });\n\n  if (!moradia) {\n    response = `Resposta inválida.\\n\\n${pergunta.tipo_moradia}`;\n    nextStep = step;\n  } else {\n    updateFields.tipo_moradia = moradia;\n    nextStep = 'ano_modelo';\n    response = pergunta.ano_modelo;\n  }\n}\n\nelse if (step === 'ano_modelo') {\n  if (!isValidAnoModelo(rawMessage)) {\n    response = 'Ano/modelo inválido.\\n\\nEnvie no formato:\\n2022/2023';\n    nextStep = step;\n  } else {\n    updateFields.ano_modelo = rawMessage;\n    nextStep = 'under_26';\n    response = `${pergunta.quase_final}\\n\\n${pergunta.under_26}`;\n  }\n}\n\nelse if (step === 'under_26') {\n  const menor26 = respostaOpcao(message, {\n    '1': 'Sim',\n    '2': 'Não',\n    'sim': 'Sim',\n    'nao': 'Não',\n    'não': 'Não'\n  });\n\n  if (!menor26) {\n    response = `Resposta inválida.\\n\\n${pergunta.under_26}`;\n    nextStep = step;\n  } else {\n    updateFields.under_26 = menor26;\n    nextStep = 'uso_veiculo';\n    response = pergunta.uso_veiculo;\n  }\n}\n\nelse if (step === 'uso_veiculo') {\n  const uso = respostaOpcao(message, {\n    '1': 'Lazer/ida e volta ao trabalho',\n    '2': 'De forma profissional',\n    'lazer': 'Lazer/ida e volta ao trabalho',\n    'trabalho': 'Lazer/ida e volta ao trabalho',\n    'profissional': 'De forma profissional'\n  });\n\n  if (!uso) {\n    response = `Resposta inválida.\\n\\n${pergunta.uso_veiculo}`;\n    nextStep = step;\n  } else {\n    updateFields.uso_veiculo = uso;\n\n    if (uso === 'De forma profissional') {\n      nextStep = 'detalhe_uso_profissional';\n      response = pergunta.detalhe_uso_profissional;\n    } else {\n      nextStep = 'is_insured';\n      response = pergunta.is_insured;\n    }\n  }\n}\n\nelse if (step === 'detalhe_uso_profissional') {\n  if (rawMessage.length < 2) {\n    response = `Resposta inválida.\\n\\n${pergunta.detalhe_uso_profissional}`;\n    nextStep = step;\n  } else {\n    updateFields.detalhe_uso_profissional = rawMessage;\n    nextStep = 'is_insured';\n    response = pergunta.is_insured;\n  }\n}\n\nelse if (step === 'is_insured') {\n  const possuiSeguro = respostaOpcao(message, {\n    '1': 'Sim',\n    '2': 'Não',\n    'sim': 'Sim',\n    'nao': 'Não',\n    'não': 'Não'\n  });\n\n  if (!possuiSeguro) {\n    response = `Resposta inválida.\\n\\n${pergunta.is_insured}`;\n    nextStep = step;\n  } else {\n    updateFields.is_insured = possuiSeguro;\n\n    if (possuiSeguro === 'Sim') {\n      nextStep = 'apolice';\n      response = pergunta.apolice;\n    } else {\n      updateFields.apolice_recebida = 'Não se aplica';\n      updateFields.apolice_media_id = null;\n      updateFields.apolice_tipo = null;\n      updateFields.enviado_leo = false;\n\n      const finalData = {\n        ...item,\n        ...updateFields\n      };\n\n      nextStep = 'finalizado';\n      status = 'finalizado';\n      response = montarResumoCliente(finalData);\n      updateFields.leo_message = montarResumoLeo(finalData);\n    }\n  }\n}\n\nelse if (step === 'apolice') {\n  const messageType = String($node[\"Extract Message Data\"].json[\"message_type\"] ?? '');\n  const mediaId = String($node[\"Extract Message Data\"].json[\"media_id\"] ?? '');\n\n  if (!['image', 'document'].includes(messageType) || !mediaId) {\n    response = 'Por favor, envie a apólice em PDF ou foto.';\n    nextStep = 'apolice';\n  } else {\n    updateFields.apolice_recebida = 'Recebida';\n    updateFields.apolice_media_id = mediaId;\n    updateFields.apolice_tipo = messageType;\n    updateFields.enviado_leo = false;\n\n    const finalData = {\n      ...item,\n      ...updateFields\n    };\n\n    nextStep = 'finalizado';\n    status = 'finalizado';\n    response = montarResumoCliente(finalData);\n    updateFields.leo_message = montarResumoLeo(finalData);\n  }\n}\n\nelse {\n  response = `Não entendi direito.\\n\\n${getPergunta(step)}`;\n  nextStep = step;\n}\n\nreturn [\n  {\n    json: {\n      ...item,\n      ...updateFields,\n      step: nextStep,\n      status,\n      response\n    }\n  }\n];"
-      },
-      "type": "n8n-nodes-base.code",
-      "typeVersion": 2,
-      "position": [
-        992,
-        1232
-      ],
-      "id": "915e407c-b117-406b-b73d-807b86f42212",
-      "name": "Code in JavaScript"
+      "id": "941e4f7e-e885-4fcb-a03c-d408119f0c21",
+      "name": "If4"
     },
     {
       "parameters": {
@@ -142,7 +88,7 @@
             {
               "id": "7fea2140-0649-451c-9640-7e670bee99c6",
               "name": "response",
-              "value": "={{$node[\"Code in JavaScript\"].json[\"response\"]}}",
+              "value": "={{$node[\"JavaScript\"].json[\"response\"]}}",
               "type": "string"
             },
             {
@@ -165,11 +111,11 @@
       "type": "n8n-nodes-base.set",
       "typeVersion": 3.4,
       "position": [
-        3024,
-        1296
+        6800,
+        3328
       ],
-      "id": "fa2df019-6945-4b51-aaf9-37d742568485",
-      "name": "Edit Fields1"
+      "id": "8e7e9593-f09f-47e0-af5b-6a64e230e0f1",
+      "name": "Edit Fields3"
     },
     {
       "parameters": {
@@ -178,11 +124,11 @@
       "type": "n8n-nodes-base.code",
       "typeVersion": 2,
       "position": [
-        1056,
-        1536
+        4832,
+        3568
       ],
-      "id": "318b6bf6-718f-4d18-a32f-0dc29924b8c1",
-      "name": "Create New Quote Data"
+      "id": "bb288602-9423-45eb-bb5c-5cf6fd1aceb1",
+      "name": "Create New Quote Data1"
     },
     {
       "parameters": {
@@ -190,13 +136,13 @@
         "responseMode": "responseNode",
         "options": {}
       },
-      "id": "7df20780-9f94-4313-b253-d16ea18d1217",
-      "name": "Receive WhatsApp Message1",
+      "id": "3e10e7f6-b577-4a91-80cd-4fde5abcd032",
+      "name": "Receive WhatsApp Message3",
       "type": "n8n-nodes-base.webhook",
       "typeVersion": 2.1,
       "position": [
-        -256,
-        -144
+        3520,
+        1888
       ],
       "webhookId": "ad80885e-8bd9-46b5-84c3-49f99400cf85"
     },
@@ -207,11 +153,11 @@
       "type": "n8n-nodes-base.code",
       "typeVersion": 2,
       "position": [
-        -16,
-        -176
+        3760,
+        1856
       ],
-      "id": "f73b1564-c907-44d6-8cba-41319d730ec9",
-      "name": "Code in JavaScript1"
+      "id": "07fb3743-6f97-4d7d-84f0-dc81e398c567",
+      "name": "Code in JavaScript3"
     },
     {
       "parameters": {
@@ -222,11 +168,11 @@
       "type": "n8n-nodes-base.respondToWebhook",
       "typeVersion": 1.5,
       "position": [
-        208,
-        -288
+        3984,
+        1744
       ],
-      "id": "87e2a87f-dc43-44c4-b38c-aaef88afeb86",
-      "name": "Respond to Webhook1"
+      "id": "3d475462-c774-4744-8205-92a1fb5ebf49",
+      "name": "Respond to Webhook"
     },
     {
       "parameters": {
@@ -253,11 +199,11 @@
       "type": "n8n-nodes-base.httpRequest",
       "typeVersion": 4.4,
       "position": [
-        3456,
-        1600
+        7232,
+        3632
       ],
-      "id": "0a365d0a-7593-4f95-a16d-ab89ab50ce6e",
-      "name": "HTTP Request",
+      "id": "b56dae90-ad85-4867-b62a-ecf6da5ee89a",
+      "name": "HTTP Request2",
       "executeOnce": true
     },
     {
@@ -288,11 +234,11 @@
       "type": "n8n-nodes-base.if",
       "typeVersion": 2.3,
       "position": [
-        -224,
-        1216
+        3552,
+        3248
       ],
-      "id": "acda6f7a-a151-4447-b26a-7b519dec8a27",
-      "name": "If3"
+      "id": "65e42d24-b057-4277-a377-76154554a7be",
+      "name": "If5"
     },
     {
       "parameters": {
@@ -502,11 +448,11 @@
       "type": "n8n-nodes-base.postgres",
       "typeVersion": 2.6,
       "position": [
-        1648,
-        1648
+        5424,
+        3680
       ],
-      "id": "c93761d2-7caa-477b-b2a8-3b0493d18447",
-      "name": "Insert rows in a table",
+      "id": "6abeed09-6f7c-4723-a911-3c9b496db27d",
+      "name": "Insert rows in a table1",
       "credentials": {
         "postgres": {
           "id": "dYYcvAYzTnyWIlYZ",
@@ -523,11 +469,11 @@
       "type": "n8n-nodes-base.postgres",
       "typeVersion": 2.6,
       "position": [
-        288,
-        1568
+        4064,
+        3600
       ],
-      "id": "e7305ae2-d212-4533-b031-5a5006423aa6",
-      "name": "Execute a SQL query",
+      "id": "a53c3dca-3e7a-4e26-af32-b4c33e1da494",
+      "name": "Execute a SQL query3",
       "alwaysOutputData": true,
       "credentials": {
         "postgres": {
@@ -545,11 +491,11 @@
       "type": "n8n-nodes-base.postgres",
       "typeVersion": 2.6,
       "position": [
-        1200,
-        1232
+        4976,
+        3264
       ],
-      "id": "2ee68f7b-f4ea-4fe8-9d8b-01e45d14dedc",
-      "name": "Execute a SQL query1",
+      "id": "09b8b35b-525f-4747-8b23-1c9dbb15a8b2",
+      "name": "Execute a SQL query4",
       "credentials": {
         "postgres": {
           "id": "dYYcvAYzTnyWIlYZ",
@@ -569,7 +515,7 @@
           "conditions": [
             {
               "id": "f0139656-f16c-4e64-b85d-6f44addc87c9",
-              "leftValue": "={{ $('Code in JavaScript').item.json.status }}",
+              "leftValue": "={{ $('JavaScript').item.json.status }}",
               "rightValue": "finalizado",
               "operator": {
                 "type": "string",
@@ -585,11 +531,11 @@
       "type": "n8n-nodes-base.if",
       "typeVersion": 2.3,
       "position": [
-        1456,
-        1248
+        5296,
+        3168
       ],
-      "id": "f3414fd9-0dc7-4907-b4ef-d986dccaaae6",
-      "name": "If1"
+      "id": "cfb6ec98-633b-4594-90e6-ef3f58806faa",
+      "name": "If6"
     },
     {
       "parameters": {
@@ -610,32 +556,32 @@
         },
         "sendBody": true,
         "specifyBody": "json",
-        "jsonBody": "={\n  \"messaging_product\": \"whatsapp\",\n  \"to\": \"5518997774785\",\n  \"type\": \"template\",\n  \"template\": {\n    \"name\": \"nova_cotacao_leo\",\n    \"language\": {\n      \"code\": \"pt_BR\"\n    },\n    \"components\": [\n      {\n        \"type\": \"body\",\n        \"parameters\": [\n          {\n            \"type\": \"text\",\n            \"text\": \"{{ (($node['Code in JavaScript'].json['nome'] || '') + ' ' + ($node['Code in JavaScript'].json['sobrenome'] || '')).trim() || 'Nao informado' }}\"\n          },\n          {\n            \"type\": \"text\",\n            \"text\": \"{{ $node['Code in JavaScript'].json['phone'] || 'Nao informado' }}\"\n          },\n          {\n            \"type\": \"text\",\n            \"text\": \"{{ (($node['Code in JavaScript'].json['placa'] || 'Sem placa') + ' - ' + ($node['Code in JavaScript'].json['ano_modelo'] || 'Sem ano/modelo')) }}\"\n          },\n          {\n            \"type\": \"text\",\n            \"text\": \"{{ $node['Code in JavaScript'].json['uso_veiculo'] || 'Nao informado' }}\"\n          }\n        ]\n      }\n    ]\n  }\n}",
+        "jsonBody": "={{ JSON.stringify({\n  messaging_product: \"whatsapp\",\n  to: \"5518997774785\",\n  type: \"template\",\n  template: {\n    name: \"nova_cotacao_leo\",\n    language: {\n      code: \"pt_BR\"\n    },\n    components: [\n      {\n        type: \"body\",\n        parameters: [\n          {\n            type: \"text\",\n            text: (($node[\"JavaScript\"].json.nome || \"\") + \" \" + ($node[\"JavaScript\"].json.sobrenome || \"\")).trim() || \"Nao informado\"\n          },\n          {\n            type: \"text\",\n            text: $node[\"JavaScript\"].json.phone || \"Nao informado\"\n          },\n          {\n            type: \"text\",\n            text: (($node[\"JavaScript\"].json.placa || \"Sem placa\") + \" - \" + ($node[\"JavaScript\"].json.ano_modelo || \"Sem ano/modelo\"))\n          },\n          {\n            type: \"text\",\n            text: $node[\"JavaScript\"].json.uso_veiculo || \"Nao informado\"\n          }\n        ]\n      }\n    ]\n  }\n}) }}",
         "options": {}
       },
       "type": "n8n-nodes-base.httpRequest",
       "typeVersion": 4.4,
       "position": [
-        1776,
-        704
+        5552,
+        2736
       ],
-      "id": "cf25cd27-1dd5-4dc2-99eb-0c59333f8f2c",
-      "name": "HTTP Request1"
+      "id": "ad8dbbed-d775-45c8-9ee6-167d16271141",
+      "name": "HTTP Request3"
     },
     {
       "parameters": {
         "operation": "executeQuery",
-        "query": "UPDATE quotes\nSET enviado_leo = true\nWHERE id = '{{ $node[\"Code in JavaScript\"].json[\"id\"] }}'\nRETURNING id;",
+        "query": "UPDATE quotes\nSET enviado_leo = true\nWHERE id = '{{ $node[\"JavaScript\"].json[\"id\"] }}'\nRETURNING id;",
         "options": {}
       },
       "type": "n8n-nodes-base.postgres",
       "typeVersion": 2.6,
       "position": [
-        2848,
-        768
+        6624,
+        2800
       ],
-      "id": "5bdb8f2c-9b56-4e52-8b41-014c679be1da",
-      "name": "Execute a SQL query2",
+      "id": "e8fa299e-bb43-4262-83e7-de92a3b614fc",
+      "name": "Execute a SQL query5",
       "credentials": {
         "postgres": {
           "id": "dYYcvAYzTnyWIlYZ",
@@ -655,7 +601,7 @@
           "conditions": [
             {
               "id": "ca5b72c0-a643-4633-91f9-d1dc7bee17c0",
-              "leftValue": "={{ $node[\"Code in JavaScript\"].json[\"apolice_tipo\"] }}",
+              "leftValue": "={{ $node[\"JavaScript\"].json[\"apolice_tipo\"] }}",
               "rightValue": "image",
               "operator": {
                 "type": "string",
@@ -671,11 +617,11 @@
       "type": "n8n-nodes-base.if",
       "typeVersion": 2.3,
       "position": [
-        2160,
-        816
+        7664,
+        2736
       ],
-      "id": "05e4c4dd-2712-42d8-95ab-4e9850a091dd",
-      "name": "If2"
+      "id": "d53ac08a-b365-4ab4-84e3-43aa5eb091b8",
+      "name": "If7"
     },
     {
       "parameters": {
@@ -696,17 +642,17 @@
         },
         "sendBody": true,
         "specifyBody": "json",
-        "jsonBody": "={\n  \"messaging_product\": \"whatsapp\",\n  \"to\": \"5518997774785\",\n  \"type\": \"image\",\n  \"image\": {\n    \"id\": \"{{ $node['Code in JavaScript'].json['apolice_media_id'] }}\"\n  }\n}",
+        "jsonBody": "={\n  \"messaging_product\": \"whatsapp\",\n  \"to\": \"5518997774785\",\n  \"type\": \"image\",\n  \"image\": {\n    \"id\": \"{{ $node['JavaScript'].json['apolice_media_id'] }}\"\n  }\n}",
         "options": {}
       },
       "type": "n8n-nodes-base.httpRequest",
       "typeVersion": 4.4,
       "position": [
-        2432,
-        720
+        8032,
+        2432
       ],
-      "id": "c92471d4-b938-4b47-abde-1f797b8a964a",
-      "name": "HTTP Request imagem"
+      "id": "0f73f5b3-7032-4cd5-a564-b8d838a831e3",
+      "name": "HTTP Request imagem1"
     },
     {
       "parameters": {
@@ -727,17 +673,17 @@
         },
         "sendBody": true,
         "specifyBody": "json",
-        "jsonBody": "={\n  \"messaging_product\": \"whatsapp\",\n  \"to\": \"5518997774785\",\n  \"type\": \"document\",\n  \"document\": {\n    \"id\": \"{{ $node['Code in JavaScript'].json['apolice_media_id'] }}\"\n  }\n}",
+        "jsonBody": "={\n  \"messaging_product\": \"whatsapp\",\n  \"to\": \"5518997774785\",\n  \"type\": \"document\",\n  \"document\": {\n    \"id\": \"{{ $node['JavaScript'].json['apolice_media_id'] }}\"\n  }\n}",
         "options": {}
       },
       "type": "n8n-nodes-base.httpRequest",
       "typeVersion": 4.4,
       "position": [
-        2432,
-        912
+        7904,
+        2912
       ],
-      "id": "26b167fb-5082-43e0-a895-eea602604d8a",
-      "name": "HTTP Request pdf"
+      "id": "617dbb31-8481-4ab3-850f-6fc286f8e517",
+      "name": "HTTP Request pdf1"
     },
     {
       "parameters": {
@@ -751,7 +697,7 @@
           "conditions": [
             {
               "id": "ae1ba353-b7c2-4241-b09a-5f47c87d6c60",
-              "leftValue": "={{ String($node[\"Code in JavaScript\"].json[\"apolice_media_id\"] || \"\") }}",
+              "leftValue": "={{ String($node[\"JavaScript\"].json[\"apolice_media_id\"] || \"\") }}",
               "rightValue": "",
               "operator": {
                 "type": "string",
@@ -768,16 +714,70 @@
       "type": "n8n-nodes-base.if",
       "typeVersion": 2.3,
       "position": [
-        1920,
-        944
+        6976,
+        2576
       ],
-      "id": "a1ce30a7-b55a-4c08-a5e4-6cae4513b6e5",
-      "name": "If tem apólice"
+      "id": "b01cf751-486f-40f0-9882-15cf561ab209",
+      "name": "If tem apólice1"
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "id-1",
+              "name": "phone",
+              "value": "={{ $json.body.entry?.[0]?.changes?.[0]?.value?.messages?.[0]?.from ?? '' }}",
+              "type": "string"
+            },
+            {
+              "id": "id-2",
+              "name": "message",
+              "value": "={{ \n  $json.body.entry[0].changes[0].value.messages[0].text?.body \n  ?? $json.body.entry[0].changes[0].value.messages[0].image?.id\n  ?? $json.body.entry[0].changes[0].value.messages[0].document?.id\n  ?? ''\n}}",
+              "type": "string"
+            },
+            {
+              "id": "6ec159e3-7a22-4f60-b007-3cd11c8c178b",
+              "name": "message_type",
+              "value": "={{ $json.body.entry[0].changes[0].value.messages[0].type ?? '' }}",
+              "type": "string"
+            },
+            {
+              "id": "11f89664-42f3-42e4-b2a5-b81a871adc2a",
+              "name": "media_id",
+              "value": "={{   $json.body.entry[0].changes[0].value.messages[0].image?.id   ?? $json.body.entry[0].changes[0].value.messages[0].document?.id   ?? '' }}",
+              "type": "string"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "39b302e3-77dc-44f2-bb52-7467ce419685",
+      "name": "Extract Message Data",
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        3280,
+        3376
+      ]
+    },
+    {
+      "parameters": {
+        "jsCode": "const item = $input.first().json;\n\nconst step = String(item.step ?? '')\n  .normalize('NFD')\n  .replace(/[\\u0300-\\u036f]/g, '')\n  .replace(/\\s+/g, '')\n  .toLowerCase();\n\nconst rawMessage = String($node[\"Extract Message Data\"].json[\"message\"] ?? '').trim();\n\nconst message = rawMessage\n  .normalize('NFD')\n  .replace(/[\\u0300-\\u036f]/g, '')\n  .trim()\n  .toLowerCase();\n\nlet updateFields = {};\nlet nextStep = step;\nlet response = '';\nlet status = String(item.status ?? 'em_andamento');\n\nconst onlyDigits = (value) => String(value ?? '').replace(/\\D/g, '');\n\nconst simNao = (value) => {\n  if (['1', 'sim', 's'].includes(value)) return 'Sim';\n  if (['2', 'nao', 'não', 'n'].includes(value)) return 'Não';\n  return value;\n};\n\nconst formatCPF = (value) => {\n  const cpf = onlyDigits(value);\n  if (cpf.length !== 11) return value ?? '';\n  return cpf.replace(/(\\d{3})(\\d{3})(\\d{3})(\\d{2})/, '$1.$2.$3-$4');\n};\n\nconst formatCEP = (value) => {\n  const cep = onlyDigits(value);\n  if (cep.length !== 8) return value ?? '';\n  return cep.replace(/(\\d{5})(\\d{3})/, '$1-$2');\n};\n\nconst pergunta = {\n  inicio: 'Oi! Vamos começar sua cotação 🚗\\n\\nO seguro é para você ou para outra pessoa?\\n\\nResponda:\\n1. Para mim\\n2. Para outra pessoa',\n  nome: 'Qual é o seu primeiro nome?',\n  sobrenome: 'Agora me informe seu sobrenome:',\n  cpf: 'Qual é o seu CPF?\\n\\nPode enviar apenas os números ou no formato:\\n000.000.000-00',\n  placa: 'Qual é a placa do veículo?\\n\\nExemplos:\\nABC1234 ou ABC1D23',\n  cep: 'Qual é o CEP de pernoite do veículo?\\n\\nExemplo: 15500-000',\n  tipo_moradia: 'Você mora em casa ou apartamento?\\n\\nResponda:\\n1. Casa\\n2. Apartamento',\n  ano_modelo: 'Qual é o ano/modelo do veículo?\\n\\nExemplo: 2022/2023',\n  quase_final: 'Estamos quase acabando...',\n  under_26: 'Existe algum condutor com menos de 26 anos?\\n\\nResponda:\\n1. Sim\\n2. Não',\n  uso_veiculo: 'O veículo é utilizado para lazer/ida e volta ao trabalho ou de forma profissional?\\n\\nResponda:\\n1. Lazer/ida e volta ao trabalho\\n2. De forma profissional',\n  detalhe_uso_profissional: 'Você utiliza para Uber, aplicativo, entregas ou prestação de serviço?',\n  is_insured: 'Atualmente o veículo possui seguro?\\n\\nResponda:\\n1. Sim\\n2. Não',\n  apolice: 'Envie a apólice atual em PDF ou foto.'\n};\n\nconst getPergunta = (stepName) => pergunta[String(stepName ?? '').toLowerCase()] ?? 'Vamos continuar de onde paramos.';\n\nconst respostaOpcao = (value, opcoes) => {\n  if (opcoes[value]) return opcoes[value];\n  return null;\n};\n\nconst montarResumoCliente = (data) => {\n  const detalheUso =\n    data.detalhe_uso_profissional &&\n    data.detalhe_uso_profissional !== 'null'\n      ? `🧾 Detalhe uso profissional: ${data.detalhe_uso_profissional}\\n`\n      : '';\n\n  const apolice =\n    data.apolice_recebida &&\n    data.apolice_recebida !== 'Não se aplica' &&\n    data.apolice_recebida !== 'null'\n      ? `📄 Apólice recebida: ${data.apolice_recebida}\\n`\n      : '';\n\n  return `📋 RESUMO DA SUA COTAÇÃO\n\n👤 Nome: ${data.nome ?? ''} ${data.sobrenome ?? ''}\n🪪 CPF: ${formatCPF(data.cpf)}\n🚗 Placa: ${data.placa ?? ''}\n📍 CEP: ${formatCEP(data.cep)}\n🏠 Moradia: ${data.tipo_moradia ?? ''}\n📅 Ano/modelo: ${data.ano_modelo ?? ''}\n👥 Condutor menor de 26 anos: ${simNao(String(data.under_26 ?? '').toLowerCase())}\n🚘 Uso do veículo: ${data.uso_veiculo ?? ''}\n${detalheUso}🛡️ Possui seguro atual: ${simNao(String(data.is_insured ?? '').toLowerCase())}\n${apolice}\n✅ Cotação enviada com sucesso!\n\nRecebemos suas informações e já encaminhamos sua solicitação para nossa equipe.\n\n📞 Em breve um consultor entrará em contato pelo WhatsApp para apresentar as melhores opções de seguro para o seu perfil e veículo.\n\nObrigado pela confiança! 🚗🛡️`;\n};\n\nconst montarResumoLeo = (data) => {\n  const detalheUso =\n    data.detalhe_uso_profissional &&\n    data.detalhe_uso_profissional !== 'null'\n      ? data.detalhe_uso_profissional\n      : 'Nao informado';\n\n  const apolice =\n    data.apolice_recebida &&\n    data.apolice_recebida !== 'Não se aplica' &&\n    data.apolice_recebida !== 'null'\n      ? data.apolice_recebida\n      : 'Nao se aplica';\n\n  return `NOVA COTACAO FINALIZADA\n\nCliente: ${data.nome ?? ''} ${data.sobrenome ?? ''}\nTelefone: ${data.phone ?? ''}\nCPF: ${formatCPF(data.cpf)}\nPlaca: ${data.placa ?? ''}\nCEP: ${formatCEP(data.cep)}\nMoradia: ${data.tipo_moradia ?? ''}\nAno/modelo: ${data.ano_modelo ?? ''}\nMenor de 26 anos: ${simNao(String(data.under_26 ?? '').toLowerCase())}\nUso do veiculo: ${data.uso_veiculo ?? ''}\nDetalhe uso profissional: ${detalheUso}\nPossui seguro atual: ${simNao(String(data.is_insured ?? '').toLowerCase())}\nApolice recebida: ${apolice}\n\nEntrar em contato com o cliente.`;\n};\n\nconst isValidCPF = (cpf) => {\n  const cleaned = onlyDigits(cpf);\n  if (cleaned.length !== 11) return false;\n  if (/^(\\d)\\1{10}$/.test(cleaned)) return false;\n\n  let sum = 0;\n  for (let i = 0; i < 9; i++) sum += Number(cleaned[i]) * (10 - i);\n\n  let firstDigit = (sum * 10) % 11;\n  if (firstDigit === 10) firstDigit = 0;\n  if (firstDigit !== Number(cleaned[9])) return false;\n\n  sum = 0;\n  for (let i = 0; i < 10; i++) sum += Number(cleaned[i]) * (11 - i);\n\n  let secondDigit = (sum * 10) % 11;\n  if (secondDigit === 10) secondDigit = 0;\n\n  return secondDigit === Number(cleaned[10]);\n};\n\nconst isValidCEP = (value) => onlyDigits(value).length === 8;\n\nconst isValidAnoModelo = (value) => {\n  const match = String(value).match(/(19|20)\\d{2}\\s*\\/?\\s*(19|20)?\\d{2}/);\n  return Boolean(match);\n};\n\nconst isValidPlaca = (value) => {\n  const cleaned = String(value).toUpperCase().replace(/[^A-Z0-9]/g, '');\n  const oldPlate = /^[A-Z]{3}\\d{4}$/;\n  const mercosul = /^[A-Z]{3}\\d[A-Z]\\d{2}$/;\n  return oldPlate.test(cleaned) || mercosul.test(cleaned);\n};\n\nif (message === 'reiniciar' || message === 'nova cotacao' || message === 'nova cotação') {\n  updateFields = {\n    tipo_cliente: '',\n    nome: '',\n    sobrenome: '',\n    cpf: '',\n    placa: '',\n    cep: '',\n    ano_modelo: '',\n    under_26: '',\n    is_insured: '',\n    tipo_moradia: '',\n    uso_veiculo: '',\n    detalhe_uso_profissional: '',\n    apolice_recebida: '',\n    apolice_media_id: null,\n    apolice_tipo: null,\n    leo_message: null,\n    enviado_leo: false\n  };\n\n  nextStep = 'inicio';\n  status = 'em_andamento';\n  response = pergunta.inicio;\n}\n\nelse if (step === 'finalizado') {\n  response = 'Sua cotação já foi finalizada.\\n\\nSe quiser começar outra cotação, digite:\\nNova cotação';\n  nextStep = 'finalizado';\n  status = 'finalizado';\n}\n\nelse if (step === 'inicio') {\n  const tipoCliente = respostaOpcao(message, {\n    '1': 'Para mim',\n    '2': 'Para outra pessoa',\n    'eu': 'Para mim',\n    'para mim': 'Para mim',\n    'pra mim': 'Para mim',\n    'outra pessoa': 'Para outra pessoa'\n  });\n\n  if (!tipoCliente) {\n    response = `Resposta inválida.\\n\\n${pergunta.inicio}`;\n    nextStep = step;\n  } else {\n    updateFields.tipo_cliente = tipoCliente;\n    nextStep = 'nome';\n    response = pergunta.nome;\n  }\n}\n\nelse if (step === 'nome') {\n  if (rawMessage.length < 2) {\n    response = `Nome inválido.\\n\\n${pergunta.nome}`;\n    nextStep = step;\n  } else {\n    updateFields.nome = rawMessage;\n    nextStep = 'sobrenome';\n    response = `Prazer, ${rawMessage}!\\n\\n${pergunta.sobrenome}`;\n  }\n}\n\nelse if (step === 'sobrenome') {\n  if (rawMessage.length < 2) {\n    response = `Sobrenome inválido.\\n\\n${pergunta.sobrenome}`;\n    nextStep = step;\n  } else {\n    updateFields.sobrenome = rawMessage;\n    nextStep = 'cpf';\n    response = pergunta.cpf;\n  }\n}\n\nelse if (step === 'cpf') {\n  if (!isValidCPF(rawMessage)) {\n    response = 'CPF inválido.\\n\\nPor favor, envie um CPF válido com 11 dígitos.';\n    nextStep = step;\n  } else {\n    updateFields.cpf = onlyDigits(rawMessage);\n    nextStep = 'placa';\n    response = pergunta.placa;\n  }\n}\n\nelse if (step === 'placa') {\n  if (!isValidPlaca(rawMessage)) {\n    response = 'Placa inválida.\\n\\nEnvie uma placa válida, como:\\nABC1234 ou ABC1D23';\n    nextStep = step;\n  } else {\n    updateFields.placa = rawMessage.toUpperCase().replace(/[^A-Z0-9]/g, '');\n    nextStep = 'cep';\n    response = pergunta.cep;\n  }\n}\n\nelse if (step === 'cep') {\n  if (!isValidCEP(rawMessage)) {\n    response = 'CEP inválido.\\n\\nEnvie um CEP com 8 dígitos.\\nExemplo: 15500-000';\n    nextStep = step;\n  } else {\n    updateFields.cep = onlyDigits(rawMessage);\n    nextStep = 'tipo_moradia';\n    response = pergunta.tipo_moradia;\n  }\n}\n\nelse if (step === 'tipo_moradia') {\n  const moradia = respostaOpcao(message, {\n    '1': 'Casa',\n    '2': 'Apartamento',\n    'casa': 'Casa',\n    'apartamento': 'Apartamento',\n    'apto': 'Apartamento'\n  });\n\n  if (!moradia) {\n    response = `Resposta inválida.\\n\\n${pergunta.tipo_moradia}`;\n    nextStep = step;\n  } else {\n    updateFields.tipo_moradia = moradia;\n    nextStep = 'ano_modelo';\n    response = pergunta.ano_modelo;\n  }\n}\n\nelse if (step === 'ano_modelo') {\n  if (!isValidAnoModelo(rawMessage)) {\n    response = 'Ano/modelo inválido.\\n\\nEnvie no formato:\\n2022/2023';\n    nextStep = step;\n  } else {\n    updateFields.ano_modelo = rawMessage;\n    nextStep = 'under_26';\n    response = `${pergunta.quase_final}\\n\\n${pergunta.under_26}`;\n  }\n}\n\nelse if (step === 'under_26') {\n  const menor26 = respostaOpcao(message, {\n    '1': 'Sim',\n    '2': 'Não',\n    'sim': 'Sim',\n    'nao': 'Não',\n    'não': 'Não'\n  });\n\n  if (!menor26) {\n    response = `Resposta inválida.\\n\\n${pergunta.under_26}`;\n    nextStep = step;\n  } else {\n    updateFields.under_26 = menor26;\n    nextStep = 'uso_veiculo';\n    response = pergunta.uso_veiculo;\n  }\n}\n\nelse if (step === 'uso_veiculo') {\n  const uso = respostaOpcao(message, {\n    '1': 'Lazer/ida e volta ao trabalho',\n    '2': 'De forma profissional',\n    'lazer': 'Lazer/ida e volta ao trabalho',\n    'trabalho': 'Lazer/ida e volta ao trabalho',\n    'profissional': 'De forma profissional'\n  });\n\n  if (!uso) {\n    response = `Resposta inválida.\\n\\n${pergunta.uso_veiculo}`;\n    nextStep = step;\n  } else {\n    updateFields.uso_veiculo = uso;\n\n    if (uso === 'De forma profissional') {\n      nextStep = 'detalhe_uso_profissional';\n      response = pergunta.detalhe_uso_profissional;\n    } else {\n      nextStep = 'is_insured';\n      response = pergunta.is_insured;\n    }\n  }\n}\n\nelse if (step === 'detalhe_uso_profissional') {\n  if (rawMessage.length < 2) {\n    response = `Resposta inválida.\\n\\n${pergunta.detalhe_uso_profissional}`;\n    nextStep = step;\n  } else {\n    updateFields.detalhe_uso_profissional = rawMessage;\n    nextStep = 'is_insured';\n    response = pergunta.is_insured;\n  }\n}\n\nelse if (step === 'is_insured') {\n  const possuiSeguro = respostaOpcao(message, {\n    '1': 'Sim',\n    '2': 'Não',\n    'sim': 'Sim',\n    'nao': 'Não',\n    'não': 'Não'\n  });\n\n  if (!possuiSeguro) {\n    response = `Resposta inválida.\\n\\n${pergunta.is_insured}`;\n    nextStep = step;\n  } else {\n    updateFields.is_insured = possuiSeguro;\n\n    if (possuiSeguro === 'Sim') {\n      nextStep = 'apolice';\n      response = pergunta.apolice;\n    } else {\n      updateFields.apolice_recebida = 'Não se aplica';\n      updateFields.apolice_media_id = null;\n      updateFields.apolice_tipo = null;\n      updateFields.enviado_leo = false;\n\n      const finalData = {\n        ...item,\n        ...updateFields\n      };\n\n      nextStep = 'finalizado';\n      status = 'finalizado';\n      response = montarResumoCliente(finalData);\n      updateFields.leo_message = montarResumoLeo(finalData);\n    }\n  }\n}\n\nelse if (step === 'apolice') {\n  const messageType = String($node[\"Extract Message Data\"].json[\"message_type\"] ?? '');\n  const mediaId = String($node[\"Extract Message Data\"].json[\"media_id\"] ?? '');\n\n  if (!['image', 'document'].includes(messageType) || !mediaId) {\n    response = 'Por favor, envie a apólice em PDF ou foto.';\n    nextStep = 'apolice';\n  } else {\n    updateFields.apolice_recebida = 'Recebida';\n    updateFields.apolice_media_id = mediaId;\n    updateFields.apolice_tipo = messageType;\n    updateFields.enviado_leo = false;\n\n    const finalData = {\n      ...item,\n      ...updateFields\n    };\n\n    nextStep = 'finalizado';\n    status = 'finalizado';\n    response = montarResumoCliente(finalData);\n    updateFields.leo_message = montarResumoLeo(finalData);\n  }\n}\n\nelse {\n  response = `Não entendi direito.\\n\\n${getPergunta(step)}`;\n  nextStep = step;\n}\n\nreturn [\n  {\n    json: {\n      ...item,\n      ...updateFields,\n      step: nextStep,\n      status,\n      response\n    }\n  }\n];"
+      },
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        4768,
+        3264
+      ],
+      "id": "52f8ff41-4f41-49f3-8458-486f53883b7f",
+      "name": "JavaScript"
     }
   ],
   "pinData": {},
   "connections": {
-    "Receive WhatsApp Message": {
+    "Receive WhatsApp Message2": {
       "main": [
         [
           {
@@ -788,229 +788,217 @@
         ]
       ]
     },
-    "Extract Message Data": {
+    "Edit Fields2": {
       "main": [
         [
           {
-            "node": "If3",
+            "node": "HTTP Request2",
             "type": "main",
             "index": 0
           }
         ]
       ]
     },
-    "Edit Fields": {
+    "If4": {
       "main": [
         [
           {
-            "node": "HTTP Request",
-            "type": "main",
-            "index": 0
-          }
-        ]
-      ]
-    },
-    "If": {
-      "main": [
-        [
-          {
-            "node": "Code in JavaScript",
+            "node": "JavaScript",
             "type": "main",
             "index": 0
           }
         ],
         [
           {
-            "node": "Create New Quote Data",
+            "node": "Create New Quote Data1",
             "type": "main",
             "index": 0
           }
         ]
       ]
     },
-    "Code in JavaScript": {
+    "Edit Fields3": {
       "main": [
         [
           {
-            "node": "Execute a SQL query1",
+            "node": "HTTP Request2",
             "type": "main",
             "index": 0
           }
         ]
       ]
     },
-    "Edit Fields1": {
+    "Create New Quote Data1": {
       "main": [
         [
           {
-            "node": "HTTP Request",
+            "node": "Insert rows in a table1",
             "type": "main",
             "index": 0
           }
         ]
       ]
     },
-    "Create New Quote Data": {
+    "Receive WhatsApp Message3": {
       "main": [
         [
           {
-            "node": "Insert rows in a table",
+            "node": "Code in JavaScript3",
             "type": "main",
             "index": 0
           }
         ]
       ]
     },
-    "Receive WhatsApp Message1": {
+    "Code in JavaScript3": {
       "main": [
         [
           {
-            "node": "Code in JavaScript1",
+            "node": "Respond to Webhook",
             "type": "main",
             "index": 0
           }
         ]
       ]
     },
-    "Code in JavaScript1": {
+    "If5": {
       "main": [
         [
           {
-            "node": "Respond to Webhook1",
+            "node": "Execute a SQL query3",
             "type": "main",
             "index": 0
           }
         ]
       ]
     },
-    "If3": {
+    "Insert rows in a table1": {
       "main": [
         [
           {
-            "node": "Execute a SQL query",
-            "type": "main",
-            "index": 0
-          }
-        ],
-        []
-      ]
-    },
-    "Insert rows in a table": {
-      "main": [
-        [
-          {
-            "node": "Edit Fields",
+            "node": "Edit Fields2",
             "type": "main",
             "index": 0
           }
         ]
       ]
     },
-    "Execute a SQL query": {
+    "Execute a SQL query3": {
       "main": [
         [
           {
-            "node": "If",
+            "node": "If4",
             "type": "main",
             "index": 0
           }
         ]
       ]
     },
-    "Execute a SQL query1": {
+    "Execute a SQL query4": {
       "main": [
         [
           {
-            "node": "If1",
+            "node": "If6",
             "type": "main",
             "index": 0
           }
         ]
       ]
     },
-    "If1": {
+    "If6": {
       "main": [
         [
           {
-            "node": "HTTP Request1",
+            "node": "HTTP Request3",
             "type": "main",
             "index": 0
           },
           {
-            "node": "Edit Fields1",
+            "node": "Edit Fields3",
             "type": "main",
             "index": 0
           }
         ],
         [
           {
-            "node": "Edit Fields1",
+            "node": "Edit Fields3",
             "type": "main",
             "index": 0
           }
         ]
       ]
     },
-    "HTTP Request1": {
+    "HTTP Request3": {
       "main": [
         [
           {
-            "node": "Execute a SQL query2",
+            "node": "Execute a SQL query5",
             "type": "main",
             "index": 0
           }
         ]
       ]
     },
-    "Execute a SQL query2": {
+    "Execute a SQL query5": {
       "main": [
         [
           {
-            "node": "If tem apólice",
+            "node": "If tem apólice1",
             "type": "main",
             "index": 0
           }
         ]
       ]
     },
-    "If2": {
+    "If7": {
       "main": [
         [
           {
-            "node": "HTTP Request imagem",
+            "node": "HTTP Request imagem1",
             "type": "main",
             "index": 0
           }
         ],
         [
           {
-            "node": "HTTP Request pdf",
+            "node": "HTTP Request pdf1",
             "type": "main",
             "index": 0
           }
         ]
       ]
     },
-    "HTTP Request imagem": {
-      "main": [
-        []
-      ]
-    },
-    "HTTP Request pdf": {
-      "main": [
-        []
-      ]
-    },
-    "If tem apólice": {
+    "If tem apólice1": {
       "main": [
         [
           {
-            "node": "If2",
+            "node": "If7",
             "type": "main",
             "index": 0
           }
-        ],
-        []
+        ]
+      ]
+    },
+    "Extract Message Data": {
+      "main": [
+        [
+          {
+            "node": "If5",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "JavaScript": {
+      "main": [
+        [
+          {
+            "node": "Execute a SQL query4",
+            "type": "main",
+            "index": 0
+          }
+        ]
       ]
     }
   },
@@ -1019,7 +1007,7 @@
     "executionOrder": "v1",
     "binaryMode": "separate"
   },
-  "versionId": "ec898c04-83c0-44f1-b7a7-2ed0ec6e17bf",
+  "versionId": "f5f0afae-8588-4f07-93ad-6c26ef99b74c",
   "meta": {
     "templateCredsSetupCompleted": true,
     "instanceId": "bcec5bf2373c41b060b7c71fdbea1b0f2423bdd87f36c1eb84873ed3fbc24041"
