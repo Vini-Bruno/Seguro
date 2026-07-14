@@ -1055,11 +1055,6 @@
             "node": "Enviar imagem - Léo",
             "type": "main",
             "index": 0
-          },
-          {
-            "node": "Enviar imagem - Sócio",
-            "type": "main",
-            "index": 0
           }
         ],
         [
@@ -1067,7 +1062,24 @@
             "node": "Enviar PDF - Léo",
             "type": "main",
             "index": 0
-          },
+          }
+        ]
+      ]
+    },
+    "Enviar imagem - Léo": {
+      "main": [
+        [
+          {
+            "node": "Enviar imagem - Sócio",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Enviar PDF - Léo": {
+      "main": [
+        [
           {
             "node": "Enviar PDF - Sócio",
             "type": "main",
