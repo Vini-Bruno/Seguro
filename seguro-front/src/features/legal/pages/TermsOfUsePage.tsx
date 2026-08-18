@@ -18,7 +18,7 @@ const sections = [
   {
     title: 'Atendimento',
     content: [
-      'O atendimento pode ocorrer por WhatsApp, telefone, e-mail ou outros canais informados pela Torrezan Seguros.',
+      'O atendimento pode ocorrer por WhatsApp, telefone, e-mail ou outros canais informados pela Torrezan Stelluti Seguros.',
       'Ao iniciar uma cotação, você autoriza o contato para fins de atendimento, simulação, renovação e acompanhamento comercial relacionado ao seguro.',
     ],
   },
@@ -26,7 +26,7 @@ const sections = [
     title: 'Responsabilidades',
     content: [
       'A contratação do seguro depende da aceitação da seguradora e da conferência dos dados informados.',
-      'A Torrezan Seguros pode atualizar este site, seus textos e estes termos sempre que necessário.',
+      'A Torrezan Stelluti Seguros pode atualizar este site, seus textos e estes termos sempre que necessário.',
     ],
   },
 ];

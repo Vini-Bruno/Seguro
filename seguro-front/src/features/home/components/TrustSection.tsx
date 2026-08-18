@@ -25,7 +25,7 @@ export function TrustSection() {
 
       <div className="trust-layout">
         <div className="trust-photo">
-          <img src={advisorPhoto} alt="Consultor da Torrezan Seguros" loading="lazy" />
+          <img src={advisorPhoto} alt="Consultor da Torrezan Stelluti Seguros" loading="lazy" />
         </div>
 
         <div className="trust-card-grid">

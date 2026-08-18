@@ -10,7 +10,7 @@ export function AdvisorSection({ whatsappHref }: AdvisorSectionProps) {
   return (
     <section className="advisor-section">
       <div className="advisor-media">
-        <img src={advisorPhoto} alt="Atendimento consultivo da Torrezan Seguros" />
+        <img src={advisorPhoto} alt="Atendimento consultivo da Torrezan Stelluti Seguros" />
       </div>
 
       <div className="advisor-copy">

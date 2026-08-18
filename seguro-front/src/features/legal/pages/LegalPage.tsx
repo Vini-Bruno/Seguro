@@ -20,7 +20,7 @@ export function LegalPage({ title, description, sections }: LegalPageProps) {
         </a>
 
         <header className="legal-header">
-          <span>Torrezan Seguros</span>
+          <span>Torrezan Stelluti Seguros</span>
           <h1>{title}</h1>
           <p>{description}</p>
           <small>Última atualização: 11 de junho de 2026</small>

@@ -1,4 +1,4 @@
-import torrezanEmblem from '@/assets/torrezan-emblem-3d.png';
+import torrezanLogo from '@/assets/torrezan-stelluti-logo-transparent.png';
 
 type FinalCtaProps = {
   whatsappHref: string;
@@ -15,7 +15,7 @@ export function FinalCta({ whatsappHref }: FinalCtaProps) {
           com orientação de um corretor.
         </p>
       </div>
-      <img className="final-cta__mark" src={torrezanEmblem} alt="" aria-hidden="true" />
+      <img className="final-cta__mark" src={torrezanLogo} alt="" aria-hidden="true" />
       <a className="primary-button" href={whatsappHref} target="_blank" rel="noreferrer">
         Cotar grátis pelo WhatsApp
       </a>

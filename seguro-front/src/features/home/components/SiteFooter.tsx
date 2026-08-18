@@ -1,4 +1,4 @@
-import torrezanEmblemWhite from '@/assets/torrezan-emblem-white-only.png';
+import torrezanLogo from '@/assets/torrezan-stelluti-logo-transparent.png';
 import { siteConfig } from '@/config/site';
 
 import { navLinks } from '../data/homeContent';
@@ -12,12 +12,8 @@ export function SiteFooter({ whatsappHref }: SiteFooterProps) {
     <footer className="site-footer" id="rodape">
       <div className="site-footer__inner">
         <div className="site-footer__brand">
-          <div className="footer-brand-mark" aria-label="Torrezan Seguros">
-            <img src={torrezanEmblemWhite} alt="" aria-hidden="true" />
-            <span>
-              <strong>Torrezan</strong>
-              <em>Seguros</em>
-            </span>
+          <div className="footer-brand-mark" aria-label="Torrezan Stelluti Seguros">
+            <img src={torrezanLogo} alt="Torrezan Stelluti Seguros" />
           </div>
           <p>Cotação e orientação para escolher seguro auto com mais clareza.</p>
         </div>
@@ -47,7 +43,9 @@ export function SiteFooter({ whatsappHref }: SiteFooterProps) {
       </div>
 
       <div className="site-footer__bottom">
-        <span>© {new Date().getFullYear()} Torrezan Seguros. Todos os direitos reservados.</span>
+        <span>
+          © {new Date().getFullYear()} Torrezan Stelluti Seguros. Todos os direitos reservados.
+        </span>
       </div>
     </footer>
   );

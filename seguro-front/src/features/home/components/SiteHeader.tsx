@@ -1,4 +1,4 @@
-import torrezanLogo from '@/assets/torrezan-logo-blue.png';
+import torrezanLogo from '@/assets/torrezan-stelluti-logo-transparent.png';
 
 import { navLinks } from '../data/homeContent';
 
@@ -9,8 +9,8 @@ type SiteHeaderProps = {
 export function SiteHeader({ whatsappHref }: SiteHeaderProps) {
   return (
     <header className="site-header" aria-label="Cabeçalho">
-      <a className="brand" href="#top" aria-label="Torrezan Seguros">
-        <img src={torrezanLogo} alt="Torrezan Seguros" />
+      <a className="brand" href="#top" aria-label="Torrezan Stelluti Seguros">
+        <img src={torrezanLogo} alt="Torrezan Stelluti Seguros" />
       </a>
 
       <nav className="site-nav" aria-label="Navegação principal">
