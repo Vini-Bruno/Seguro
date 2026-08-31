@@ -3,6 +3,7 @@ import clientFiatSuvPhoto from '@/assets/client-fiat-suv-seguro.jpeg';
 import clientPeugeotPhoto from '@/assets/client-peugeot-entrega.jpeg';
 import clientPorschePremiumPhoto from '@/assets/client-porsche-premium-seguro.jpeg';
 import clientVolkswagenPhoto from '@/assets/client-volkswagen-seguro.jpeg';
+import leoSincorPartnershipPhoto from '@/assets/leo-sincor-parceria.jpeg';
 
 import type { ClientProof, FaqItem, IconCard, Insurer, NavLink, QuoteType, TextCard, TrustSignal } from '../types';
 
@@ -184,6 +185,14 @@ export const proofItems: TextCard[] = [
 ];
 
 export const clientProofs: ClientProof[] = [
+  {
+    image: leoSincorPartnershipPhoto,
+    alt: 'Leo com parceiro em frente ao painel do Sincor SP',
+    meta: 'Parceria',
+    title: 'Parceria do Leo no Sincor SP',
+    description: 'Registro de relacionamento profissional que fortalece a atuação no mercado de seguros.',
+    imagePosition: 'center 52%',
+  },
   {
     image: clientPorschePremiumPhoto,
     alt: 'Cliente ao lado de um Porsche branco durante atendimento de seguro',

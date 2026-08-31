@@ -5,14 +5,17 @@ export function ProofSection() {
   return (
     <section className="proof-section" id="clientes">
       <div className="proof-section__intro">
-        <SectionHeading eyebrow="Clientes reais" title="Quem compra o carro também pode sair com o seguro encaminhado." />
+        <SectionHeading
+          eyebrow="Clientes e parcerias"
+          title="Relacionamentos reais ajudam você a contratar com mais segurança."
+        />
         <p>
-          Registros de clientes atendidos na compra do veículo, com orientação para escolher coberturas e
-          contratar com clareza.
+          Registros de clientes atendidos e parcerias profissionais, com orientação para escolher coberturas
+          e contratar com clareza.
         </p>
       </div>
 
-      <div className="proof-gallery" aria-label="Clientes que compraram veículo e contrataram seguro">
+      <div className="proof-gallery" aria-label="Clientes atendidos e parcerias profissionais">
         {clientProofs.map((item) => (
           <article className="proof-story" key={item.title}>
             <div className="proof-story__photo">
